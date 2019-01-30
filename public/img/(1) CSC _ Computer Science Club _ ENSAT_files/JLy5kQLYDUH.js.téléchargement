@@ -1,0 +1,4 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["c1nlK"]); }
+
+__d("GroupMallContextRow",["CSS"],(function(a,b,c,d,e,f){a={setDismissHandler:function(a){a.setDismissHandler(function(){b("CSS").hide(a.getRoot())})}};e.exports=a}),null);
+__d("LitestandComposerPublisher",["Arbiter"],(function(a,b,c,d,e,f){f.publish=function(a,c,d){b("Arbiter").inform("LitestandComposer/publish",{composer_id:a,content_id:d,markup:c})}}),null);
