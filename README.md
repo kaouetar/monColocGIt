@@ -1,6 +1,6 @@
 # Application Laravel : MonColocV1.0
 ![Mon Coloc](https://cdn-images-1.medium.com/max/1600/1*fN6SmVkrWyBLZi4UvRHdgA.jpeg)
-Une Application Laravel qui permet gérer un Espace membre utilisant MySQL, Inscription/Connexion des membres, Publication des postes/annonces avec commentaires, Blog avec les opérations CRUD géré par plusieurs admin.
+Une Application Laravel qui permet gérer un Espace membre utilisant MySQL, et permet aux étudiants de trouver des colocataires.
 
 **Developpé Par :**
   - El Khattabi Kaouetar
