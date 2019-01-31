@@ -12,6 +12,7 @@
 */
 // derniere version
 Route::get('/','MainController@index');
+Route::get('/offers','MainController@offers');
 
 Route::get('index.html','MainController@index')->name('');
 

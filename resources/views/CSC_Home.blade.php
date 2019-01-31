@@ -18,6 +18,7 @@
 	<li><a href="#home">Accueil</a></li>
 	<li><a href="#about">A propos de nous</a></li>
 	<li><a href="">Contact</a></li>
+	<li><a href="/offers">Offers</a></li>
 	<!-- <li><a href="#portfolio">Evenements</a></li>
 	<li><a href="#service">Services</a></li>
 	<li><a href="#joinus">Nous Rejoindre</a></li>

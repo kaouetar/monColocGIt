@@ -9,16 +9,12 @@ class MainController extends Controller
     //
     public function index ()
     {
-        return view('CSC_Home');
+      return view('offers');
     }
 
     public function oldIndex()
     {
         return view('oldindex');
-    }
-    public function offers(){
-      return view('offers');
-
     }
 
 

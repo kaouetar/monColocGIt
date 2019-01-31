@@ -1,8 +1,8 @@
 @section('header')
 <!-- Header -->
 <header id="home">
-  @yield('Background')
 
+@yield('Background')
   <!-- Nav -->
   <nav id="nav" class="navbar nav-transparent">
     <div class="container">
