@@ -18,13 +18,8 @@
 	<li><a href="#home">Accueil</a></li>
 	<li><a href="#about">A propos de nous</a></li>
 	<li><a href="">Contact</a></li>
-	<li><a href="/offers">Offers</a></li>
-	<!-- <li><a href="#portfolio">Evenements</a></li>
-	<li><a href="#service">Services</a></li>
-	<li><a href="#joinus">Nous Rejoindre</a></li>
-	<li><a href="login">Espace Membre</a></li>
-	<li><a style="color:tomato;"href="Ensat_CD"><span >Ensat Coding Challenge</span></a></li>
-	-->
+	<!-- <li><a href="/offers">Offers</a></li> -->
+
 	<li><a href="login">Connexion</a></li>
 
 </ul>
@@ -37,7 +32,7 @@
 	<div class="home-content">
 		<h1 class="white-text"><span style="color: #d6916d;">R</span>ent <span style="color: #d6916d;">IK</span></h1>
 		<p class="white-text">Vous êtes à la recherche d'un loyer ? Vous l'avez déjà et vous cherchez avec qui le partager ?
-			<h3 class="white-text"> Ne cherchez plus, vous êtes dans le bon endroit. </h3>
+			<h3 class="white-text"> Ne cherchez plus, vous êtes au bon endroit. </h3>
 		</p>
 		<a class="white-btn" href="/register">Inscivez-vous !</a>
 	</div>
