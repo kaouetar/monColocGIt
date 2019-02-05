@@ -3,6 +3,8 @@
 
 @section('stylesheet')
 <link type="text/css" rel="stylesheet" href="css/style.css" />
+<script src="{{ asset('js/app.js') }}" defer></script>
+
 @endsection('stylesheet')
 
 @section('Background')
@@ -23,28 +25,45 @@
 	@guest
 	<li><a href="login">Connexion</a></li>
 	@else
-			<li class="nav-item dropdown">
-					<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-							{{ Auth::user()->name }} <span class="caret"></span>
+	<li>
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+	 									 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+        <li><a href="#">{{ __('My posts') }}</a></li>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+						@csrf
+				</form>
+      </ul>
+    </li>
+	<!--<li><a class="dropdown-item" href="{{ route('logout') }}"
+		 onclick="event.preventDefault();
+									 document.getElementById('logout-form').submit();">
+			{{ __('Logout') }}
+	</a></li>
+	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+			@csrf
+	</form>
+-->
+
+		<!--	<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							{{ Auth::user()->name }}
 					</a>
 
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{{ route('logout') }}"
-								 onclick="event.preventDefault();
-															 document.getElementById('logout-form').submit();">
+					<div class="dropdown-menu">
+							<a class="dropdown-item" href="/offers"
+								 >
 									{{ __('My posts') }}
 							</a>
-							<a class="dropdown-item" href="{{ route('logout') }}"
-								 onclick="event.preventDefault();
-															 document.getElementById('logout-form').submit();">
-									{{ __('Logout') }}
-							</a>
+
 
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 									@csrf
 							</form>
 					</div>
-			</li>
+			</li> -->
+
 
 	@endguest
 
@@ -60,7 +79,7 @@
 		<p class="white-text">Vous êtes à la recherche d'un loyer? Vous l'avez déjà et vous cherchez avec qui le partager ?
 			<h3 class="white-text"> Ne cherchez plus, vous êtes au bon endroit. </h3>
 		</p>
-			@guest
+		@guest
 		<a class="white-btn" href="/register">Inscivez-vous !</a>
 		@else
 		<a class="white-btn" href="/offers">Consultez nos offres!</a>

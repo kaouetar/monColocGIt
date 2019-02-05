@@ -51,7 +51,7 @@ class ArticleController extends Controller
 
           return redirect('offers')->withInput()->with('success','Article ajoutée!');
         }
-      /*  public function getUser($id)
+       public function getUser($id)
       //getting the name of the user through his id
         {
           if($id)
@@ -59,7 +59,7 @@ class ArticleController extends Controller
             $name = article::
           }
 
-        } */
+        } 
 
 
 }
