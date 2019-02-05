@@ -55,8 +55,8 @@
                         <div class="form-group row ">
                             <div class="col-md-6 offset-md-4">
 
-                                <button type="submit" style="background-color:#f7c8aa; margin-left: 130px;" class="btn btn">
-                                    {{ __('Login') }}
+                                <button type="submit" style="background-color:#f7c8aa; margin-left: 70px;" class="btn btn">
+                                    {{ __('Se connecter') }}
                                 </button>
 
 

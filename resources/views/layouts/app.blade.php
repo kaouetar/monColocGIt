@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('Blog', 'RentIK') }}</title>
+    <title>
+      <img class="logo" src="images\icons\icons8_Home_35px.png" width="30" alt="logo">
+      {{ config('Blog', 'RentIK') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

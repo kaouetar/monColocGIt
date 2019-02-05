@@ -12,6 +12,7 @@
 */
 // derniere version
 Route::get('/','MainController@index');
+Route::get('/offers','MainController@offers');
 
 Route::get('index.html','MainController@index')->name('');
 
@@ -20,7 +21,7 @@ Route::get('Ensat_CD', 'InscriptionsCPC_Controller@getData');
 Route::post('inscriptionCPC/submit', 'InscriptionsCPC_Controller@submit');
 
 Route::post('contactushome/submit', 'contactus_Controller@submitHome');
-Route::post('contactusECC/submit', 'contactus_Controller@submitECC');
+//Route::post('contactusECC/submit', 'contactus_Controller@submitECC');
 //Route::post('contactus/submit', 'contactus_Controller@submit');
 
 Auth::routes();
@@ -29,7 +30,7 @@ Route::get('/blog', 'ArticleController@index')->name('home');
 
 Route::get('/EspaceMembre', 'HomeController@index')->name('home');
 
-Route::get('/home','ArticleController@index');
+Route::get('/offers','ArticleController@index');
 
 Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
     return "this page requires that you be logged in and an Admin";
