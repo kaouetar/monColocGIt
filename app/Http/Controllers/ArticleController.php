@@ -16,7 +16,7 @@ class ArticleController extends Controller
         $data = article::orderBy('DATECREATION', 'desc')
         ->join('users', 'users.id', '=', 'publicationlogement.iduser')
         ->get();
-        return view('/offers')->with('data',$data);
+        return view('/offerstest')->with('data',$data);
     }
 
     public function getArticleForm()
