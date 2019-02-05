@@ -25,12 +25,15 @@
 	@guest
 	<li><a href="login">Connexion</a></li>
 	@else
+	<li><a href="offers">Offres Disponible</a></li>
+
 	<li>
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
       <ul class="dropdown-menu">
+				<li><a href="myoffers">{{ __('My posts') }}</a></li>
+
         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 	 									 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-        <li><a href="#">{{ __('My posts') }}</a></li>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 						@csrf
 				</form>

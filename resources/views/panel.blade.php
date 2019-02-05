@@ -26,7 +26,7 @@
                                 {{Form::text('Titre','',['class' => 'form-control' , 'placeholder' => 'Titre' ] )}}
                             <br>
                                 {{Form::label('Nombre de personnes','Nombre de colocataires')}}
-							    {{Form::text('Auteur','',['class' => 'form-control' , 'placeholder' => 'Nombre de personnes' ] )}}
+							    {{Form::text('NombrePersonnes','',['class' => 'form-control' , 'placeholder' => 'Nombre de personnes' ] )}}
                             <br>
                                 <fieldset>
 								{{Form::label('Description','Description')}}
