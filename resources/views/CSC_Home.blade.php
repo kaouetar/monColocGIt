@@ -18,9 +18,34 @@
 	<li><a href="#home">Accueil</a></li>
 	<li><a href="#about">A propos de nous</a></li>
 	<li><a href="">Contact</a></li>
-	<!-- <li><a href="/offers">Offers</a></li> -->
 
+	@guest
 	<li><a href="login">Connexion</a></li>
+	@else
+			<li class="nav-item dropdown">
+					<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+							{{ Auth::user()->name }} <span class="caret"></span>
+					</a>
+
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{{ route('logout') }}"
+								 onclick="event.preventDefault();
+															 document.getElementById('logout-form').submit();">
+									{{ __('My posts') }}
+							</a>
+							<a class="dropdown-item" href="{{ route('logout') }}"
+								 onclick="event.preventDefault();
+															 document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+							</a>
+
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+							</form>
+					</div>
+			</li>
+
+	@endguest
 
 </ul>
 <!-- /Main navigation -->
@@ -31,10 +56,15 @@
 <div class="col-md-10 col-md-offset-1">
 	<div class="home-content">
 		<h1 class="white-text"><span style="color: #d6916d;">R</span>ent <span style="color: #d6916d;">IK</span></h1>
-		<p class="white-text">Vous êtes à la recherche d'un loyer ? Vous l'avez déjà et vous cherchez avec qui le partager ?
+		<p class="white-text">Vous êtes à la recherche d'un loyer? Vous l'avez déjà et vous cherchez avec qui le partager ?
 			<h3 class="white-text"> Ne cherchez plus, vous êtes au bon endroit. </h3>
 		</p>
+			@guest
 		<a class="white-btn" href="/register">Inscivez-vous !</a>
+		@else
+		<a class="white-btn" href="/offers">Consultez nos offres!</a>
+		@endguest
+
 	</div>
 </div>
 <!-- /home content -->
