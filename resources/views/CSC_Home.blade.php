@@ -1,4 +1,5 @@
 @section('title','RentIK')
+@section('headerID','home')
 
 @section('stylesheet')
 <link type="text/css" rel="stylesheet" href="css/style.css" />

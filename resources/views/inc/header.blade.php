@@ -1,6 +1,6 @@
 @section('header')
 <!-- Header -->
-<header id="home">
+<header id="@yield('headerID')">
 
 @yield('Background')
   <!-- Nav -->
