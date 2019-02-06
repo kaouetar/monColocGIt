@@ -42,7 +42,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                @if ( Auth::user() && Auth::user()->isAdmin())
+                @if ( Auth::user())
                 <a href="create/post"><button type="button" class="btn btn-primary">Create Post</button></a>
                 @endif
 
