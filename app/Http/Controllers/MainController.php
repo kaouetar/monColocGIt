@@ -20,6 +20,10 @@ class MainController extends Controller
       return view('offers');
 
     }
+    public function myoffers(){
+      return view('myoffers');
+
+    }
 
 
 }
