@@ -1,5 +1,5 @@
 @section('title','RentIK')
-
+@section('')
 
 @section('stylesheet')
 
@@ -10,25 +10,24 @@
   @endsection
   @section('NavigationBar')
   <!--  Main navigation  -->
-  <ul class="main-nav nav navbar-nav navbar-right" style="margin-left:50px;">
   	<li><a href="#home">Accueil</a></li>
   	<li><a href="#about">A propos de nous</a></li>
-  	<li><a href="">Contact</a></li>
+  	<li><a href="#contact">Contact</a></li>
 
 
   	<li>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-  	 									 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-          <li><a href="#">{{ __('My posts') }}</a></li>
+  	 									 document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a></li>
+          <li><a href="#">{{ __('Mes offres') }}</a></li>
   				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
   						@csrf
   				</form>
         </ul>
       </li>
 
-  	
+
 
   </ul>
   <!-- /Main navigation -->

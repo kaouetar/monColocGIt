@@ -14,7 +14,7 @@
       </div>
       <!-- /Section-header -->
 
-      <!-- contact -->
+      <!-- contact
       <div class="col-sm-4">
         <div class="contact">
           <i class="fa fa-phone"></i>
@@ -24,7 +24,7 @@
       </div>
       <!-- /contact -->
 
-      <!-- contact -->
+      <!-- contact
       <div class="col-sm-4">
         <div class="contact">
           <i class="fa fa-envelope"></i>
@@ -34,7 +34,7 @@
       </div>
       <!-- /contact -->
 
-      <!-- contact -->
+      <!-- contact 
       <div class="col-sm-4">
         <div class="contact">
           <i class="fa fa-map-marker"></i>
