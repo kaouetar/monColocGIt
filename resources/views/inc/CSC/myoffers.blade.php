@@ -12,7 +12,7 @@ a.btn:hover {
 
       <div class="row mt centered ">
         <div class="col-lg-4 col-lg-offset-4">
-          <h3>Vos publications <a href="#" class="btn btn a-btn-slide-text"style="margin-left:0px;color:#af8f69">
+          <h3>Vos publications <a href="panel" class="btn btn a-btn-slide-text"style="margin-left:0px;color:#af8f69">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         <span><strong>Ajouter</strong></span>
     </a></h3>
