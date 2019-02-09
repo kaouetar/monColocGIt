@@ -12,8 +12,8 @@
 */
 // derniere version
 Route::get('/','MainController@index');
-Route::get('/offers','MainController@offers');
-Route::get('/myoffers','MainController@myoffers');
+Route::get('/myoffers','ArticleController@myoffers');
+Route::get('/offers','ArticleController@index');
 
 
 Route::get('index.html','MainController@index')->name('');
@@ -32,7 +32,6 @@ Route::get('/blog', 'ArticleController@index')->name('home');
 
 Route::get('/EspaceMembre', 'HomeController@index')->name('home');
 
-Route::get('/offers','ArticleController@index');
 
 Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
     return "this page requires that you be logged in and an Admin";

@@ -14,10 +14,12 @@ class ArticleController extends Controller
     //
     public function index() {
         $data = article::orderBy('DATECREATION', 'desc')
-        ->join('users', 'users.id', '=', 'publicationlogement.iduser')
-        ->get();
+        ->join('users', 'users.id', '=', 'publicationlogement.iduser')->get();
+
+
         return view('/offerstest')->with('data',$data);
     }
+
 
     public function getArticleForm()
     {
@@ -41,6 +43,13 @@ class ArticleController extends Controller
 
           return redirect('offers')->withInput()->with('success','Article ajoutée!');
         }
+
+    public function myOffers() {
+        $data = article::orderBy('DATECREATION', 'desc')
+        ->join('users', 'users.id', '=', 'publicationlogement.iduser')->where('users.id',Auth::id())->get();
+
+        return view('/myofferstest')->with('data',$data);
+    }
 
 
 

@@ -1,15 +1,29 @@
 @section('title','RentIK')
-@section('headerID','home')
+@section('headerID','')
 
 @section('stylesheet')
 <link type="text/css" rel="stylesheet" href="css/style.css" />
 <script src="{{ asset('js/app.js') }}" defer></script>
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animations/animations.css" rel="stylesheet">
+  <link href="lib/hover-pack/hover-pack.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style2.css" rel="stylesheet">
+  <link href="css/colors/color-74c9be.css" rel="stylesheet">
+
+	<script src="lib/jquery/jquery.min.js"></script>
+ <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+ <script src="lib/php-mail-form/validate.js"></script>
+ <script src="lib/hover-pack/hover-pack.js"></script>
 @endsection('stylesheet')
 
 @section('Background')
 <!-- Background Image -->
-<div class="bg-img" style="background-image: url('https://blog.appartager.com/wp-content/uploads/2013/11/Trousseau-de-cl%C3%A9s-740x357.jpg');">
+	<div class="bg-img" style="background-image: url('https://blog.appartager.com/wp-content/uploads/2013/11/Trousseau-de-cl%C3%A9s-740x357.jpg');">
 	<div class="overlay"></div>
 </div>
 <!-- /Background Image -->
@@ -18,9 +32,9 @@
 @section('NavigationBar')
 <!--  Main navigation  -->
 <ul class="main-nav nav navbar-nav navbar-right" style="margin-left:50px;">
-	<li><a href="#home">Accueil</a></li>
-	<li><a href="#about">A propos de nous</a></li>
-	<li><a href="#contact">Contact</a></li>
+	<li><a href="/">Accueil</a></li>
+	<li><a href="/#about">A propos de nous</a></li>
+	<li><a href="/#contact">Contact</a></li>
 
 	@guest
 	<li><a href="login">Connexion</a></li>
@@ -31,8 +45,7 @@
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
       <ul class="dropdown-menu">
 				<li><a href="myoffers">{{ __('Mes offres') }}</a></li>
-				<li><a href="settings">{{ __('Paramètres') }}</a></li>
-				
+        <li><a href="settings">{{ __('Paramètres') }}</a></li>
         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 	 									 document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a></li>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -76,21 +89,7 @@
 @endsection('NavigationBar')
 
 @section('HomeContent')
-<!-- home content -->
-<div class="col-md-10 col-md-offset-1">
-	<div class="home-content">
-		<h1 class="white-text"><span style="color: #d6916d;">R</span>ent <span style="color: #d6916d;">IK</span></h1>
-		<p class="white-text">Vous êtes à la recherche d'un loyer? Vous l'avez déjà et vous cherchez avec qui le partager ?
-			<h3 class="white-text"> Ne cherchez plus, vous êtes au bon endroit. </h3>
-		</p>
-		@guest
-		<a class="white-btn" href="/register">Inscivez-vous !</a>
-		@else
-		<a class="white-btn" href="/offers">Consultez nos offres!</a>
-		@endguest
 
-	</div>
-</div>
 <!-- /home content -->
 @endsection
 
@@ -102,7 +101,7 @@
 @extends('layouts.CSC')
 @section('content')
 
-	@include('inc.CSC.about')
-	@include('inc.contactus')
+	@include('inc.CSC.myoffers')
+
 
 @endsection('content')
