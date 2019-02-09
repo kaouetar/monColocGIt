@@ -12,7 +12,7 @@
   <!--  Main navigation  -->
   	<li><a href="#home">Accueil</a></li>
   	<li><a href="#about">A propos de nous</a></li>
-  	<li><a href="#contact">Contact</a></li>
+  	<li><a href="#">Contact</a></li>
 
 
   	<li>
