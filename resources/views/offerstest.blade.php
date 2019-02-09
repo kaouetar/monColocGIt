@@ -39,7 +39,7 @@
 	@guest
 	<li><a href="login">Connexion</a></li>
 	@else
-	<li><a href="offers">Offres Disponibles</a></li>
+	<li><a href="#offers">Offres Disponibles</a></li>
 
 	<li>
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
@@ -101,7 +101,7 @@
 @extends('layouts.CSC')
 @section('content')
 
-	@include('inc.CSC.offers')
+@include('inc.CSC.offers')
 
 
 @endsection('content')

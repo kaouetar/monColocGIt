@@ -1,5 +1,5 @@
 <!-- About -->
-<div id="about" class="section md-padding">
+<div id="offers" class="section ">
 
   <div class="container">
 

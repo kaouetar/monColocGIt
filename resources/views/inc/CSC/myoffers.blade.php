@@ -6,7 +6,7 @@ a.btn:hover {
    -o-transform: scale(1.1);
 }
 </style>
-<div id="about" class="section md-padding">
+<div id="offers" class="section md-padding">
 
   <div class="container">
 
