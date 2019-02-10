@@ -52,7 +52,7 @@ Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
 
 //Route::post('myoffers', 'ArticleController@submit');
 Route::post('create/post/add', 'ArticleController@submit');
-Route::post('create/post/delete/{id}', 'ArticleController@destroy');
+Route::get('post/delete/{id}', 'ArticleController@destroy');
 Route::post('create/post/update/{id}', 'ArticleController@update');
 
 Route::get('panel','ArticleController@getArticleForm');

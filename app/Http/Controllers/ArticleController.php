@@ -49,13 +49,13 @@ class ArticleController extends Controller
             }
           //Create New Message
           $ajoutArticle= new article;
-          $ajoutArticle->TITRE= $request->input('Titre'        );
-          $ajoutArticle->DESCRIPTION= $request->input('Description'      );
+          $ajoutArticle->TITRE= $request->input('TITRE'        );
+          $ajoutArticle->DESCRIPTION= $request->input('DESCRIPTION'      );
         //  $ajoutArticle->Prixmensuel= $request->input('Prix/Mois'      );
-          $ajoutArticle->ADRESSE= $request->input('Adresse'      );
-          $ajoutArticle->CAPACITEMAX= $request->input('Capacité'      );
-          $ajoutArticle->CAPACITEUTILISE=$request->input('NombrePersonnes' );
-          $ajoutArticle->PRIXMENSUEL=$request->input('Prixmensuel' );
+          $ajoutArticle->ADRESSE= $request->input('ADRESSE'      );
+          $ajoutArticle->CAPACITEMAX= $request->input('CAPACITEMAX'      );
+          $ajoutArticle->CAPACITEUTILISE=$request->input('CAPACITEUTILISE' );
+          $ajoutArticle->PRIXMENSUEL=$request->input('PRIXMENSUEL' );
           $ajoutArticle->VISIBLE=1;
           $ajoutArticle->DATECREATION= \DB::raw('now()');
           $ajoutArticle->IDUSER=  Auth::id();
@@ -63,7 +63,7 @@ class ArticleController extends Controller
 
           $ajoutArticle->save();
 
-          return redirect('offers')->withInput()->with('success','Article ajoutée!');
+          return redirect('myoffers')->withInput()->with('success','Article ajoutée!');
         }
 
     public function myOffers() {
@@ -80,12 +80,10 @@ class ArticleController extends Controller
 
     public function destroy($id) {
 
-        $article = article::findOrFail($id);
-        $article->VISIBLE=0;
-        $article->save();
-
-
-
+        //$article = article::findOrFail($id);
+        //$article->destroy();
+        article::destroy($id);
+        return redirect('/myoffers');
     }
     public function update(Request $request, $id)
     {

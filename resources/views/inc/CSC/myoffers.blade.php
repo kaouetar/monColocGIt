@@ -180,26 +180,26 @@ font-size: 12px;
         					<h1>Ajouter une offre</h1><br>
                         {!! Form::open(['url' => 'create/post/add']) !!}
                 <div class="form-group">
-                                    {{Form::label('Titre',"Titre")}} {{Form::text('TITRE','',['class' => 'form-control' , 'placeholder' => 'Titre de l\'offre' ])}}
+                                    {{Form::label('Titre',"Titre")}} {{Form::text('TITRE','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Titre de l\'offre' ])}}
                                 <br>
                                     {{Form::label('Nombre actuel','Nombre')}}
-                                    {{Form::number('CAPACITEUTILISE','',['class' => 'form-control' , 'placeholder' => 'Nombre de colocataires' ])}}
+                                    {{Form::number('CAPACITEUTILISE','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Nombre de colocataires' ])}}
                                 <br>
                                 {{Form::label('Capacité','Nombre')}}
-                                {{Form::number('CAPACITEMAX','',['class' => 'form-control' , 'placeholder' => 'Capacité maximale' ])}}
+                                {{Form::number('CAPACITEMAX','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Capacité maximale' ])}}
                                 <br>
                                 {{Form::label('Prix',"Prix / moix")}}
-                                {{Form::text('PRIXMENSUEL','',['class' => 'form-control' , 'placeholder' => 'Prix mensuel' ] )}}
+                                {{Form::text('PRIXMENSUEL','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Prix mensuel' ] )}}
                                 <br>
 
                               <fieldset>
                               {{Form::label('Description','Description')}}
-                              {{Form::textarea('DESCRIPTION','',['class' => 'form-control' , 'placeholder' => 'Décrivez votre offre' ] )}}
+                              {{Form::textarea('DESCRIPTION','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Décrivez votre offre' ] )}}
                             </fieldset>
                             <br>
                             <fieldset>
                             {{Form::label('Adresse','Adresse')}}
-                            {{Form::textarea('ADRESSE','',['class' => 'form-control' , 'placeholder' => 'Votre adresse ' ] )}}
+                            {{Form::textarea('ADRESSE','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Votre adresse ' ] )}}
                             </fieldset>
                             <br>
                             {{Form::label('Image',"Image")}}
@@ -237,39 +237,54 @@ font-size: 12px;
       @foreach($data->chunk(3) as $chunk)
         <div class="row mt">
           @foreach( $chunk as $article)
-          <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+          <div class="modal fade" id="edit-modal-{{$article->IDPUBLICATION}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                   <div class="modal-dialog">
                   <div class="editmodal-container">
+                    <script type="text/javascript">
+                    function myFunction{{$article->IDPUBLICATION}}() {
+                          //console.log($(this).val({{$article->CAPACITEMAX}});
+                        var xd = {!! json_encode($article->toArray()) !!};
+                        console.log(xd);
+                        var title = $(".Titre"+{{ $article->IDPUBLICATION}} ).val(xd.TITRE);
+                        var title = $(".Capaciteutil"+{{ $article->IDPUBLICATION}} ).val(xd.CAPACITEUTILISE);
+                        var title = $(".Capacitemax"+{{ $article->IDPUBLICATION}} ).val(xd.CAPACITEMAX);
+                        var title = $(".Prix"+{{ $article->IDPUBLICATION}} ).val(xd.PRIXMENSUEL);
+                        var title = $(".Description"+{{ $article->IDPUBLICATION}} ).val(xd.DESCRIPTION);
+                        var title = $(".Adresse"+{{ $article->IDPUBLICATION}} ).val(xd.ADRESSE);
+                        //var title = $(".Image"+{{ $article->IDPUBLICATION}} ).val(xd.TITRE);
+
+                    }
+                    </script>
                     <h1>Modifier l'offre</h1><br>
                           {!! Form::open(['url' => 'create/post/update/'.$article->IDPUBLICATION]) !!}
                   <div class="form-group">
                                       {{Form::label('Titre',"Titre")}}
-                                      {{Form::text('Titre','',['id'=>'Titre','class' => 'form-control'  ] )}}
+                                      {{Form::text('Titre','',['id'=>'Titre','class' => 'Titre'.$article->IDPUBLICATION.' form-control'  ] )}}
                                   <br>
                                       {{Form::label('Nombre actuel','Nombre')}}
-                                      {{Form::number('CAPACITEUTILISE','',['id'=>'NombrePersonnes','class' => 'form-control' ] )}}
+                                      {{Form::number('CAPACITEUTILISE','',['id'=>'NombrePersonnes','class' => 'Capaciteutil'.$article->IDPUBLICATION.' form-control' ] )}}
                                   <br>
                                       {{Form::label('Capacité','Nombre')}}
-                                      {{Form::number('CAPACITEMAX','',['id'=>'Capacité','class' => 'form-control' , 'placeholder' => 'Capacité maximale' ] )}}
+                                      {{Form::number('CAPACITEMAX','',['id'=>'Capacité','class' => 'Capacitemax'.$article->IDPUBLICATION.' form-control' , 'placeholder' => 'Capacité maximale' ] )}}
                                   <br>
                                       {{Form::label('Prix',"Prix / moix")}}
-                                      {{Form::text('PRIXMENSUEL','',['id'=>'Prix','class' => 'form-control' , 'placeholder' => 'Prix mensuel' ] )}}
+                                      {{Form::text('PRIXMENSUEL','',['id'=>'Prix','class' => 'Prix'.$article->IDPUBLICATION.' form-control' , 'placeholder' => 'Prix mensuel' ] )}}
                                   <br>
 
                                 <fieldset>
                                     {{Form::label('Description','Description')}}
-                                    {{Form::textarea('DESCRIPTION','',['id'=>'Description','class' => 'form-control' , 'placeholder' => 'Décrivez votre offre' ] )}}
+                                    {{Form::textarea('DESCRIPTION','',['id'=>'Description','class' => 'Description'.$article->IDPUBLICATION.' form-control' , 'placeholder' => 'Décrivez votre offre' ] )}}
                               </fieldset>
                               <br>
                               <fieldset>
                                   {{Form::label('Adresse','Adresse')}}
-                                  {{Form::textarea('ADRESSE','',['id'=>'Adresse','class' => 'form-control' , 'placeholder' => 'Votre adresse ' ] )}}
+                                  {{Form::textarea('ADRESSE','',['id'=>'Adresse','class' => 'Adresse'.$article->IDPUBLICATION.' form-control' , 'placeholder' => 'Votre adresse ' ] )}}
                               </fieldset>
                               <br>
                               {!! Form::open(['url' => '']) !!}
                       <div class="form-group">
                                   {{Form::label('Image',"Image")}}
-                                  {{Form::file('Image',array('class' => 'image'))}}
+                                  {{Form::file('Image',array('class' => 'Image'.$article->IDPUBLICATION.' image'))}}
                                 </div>
                               {!! Form::close() !!}
                     <div class="text-center">
@@ -296,11 +311,11 @@ font-size: 12px;
             </a>
 
             <p>{{$article->TITRE}}
-              <a href="#test" data-toggle="modal" data-mytitle="{{$article->TITRE}}" data-mydescription="{{$article->DESCRIPTION}}" data-id="{{$article->ID}}" data-capacite="{{$article->CAPACITEMAX}}" data-nombre="{{$article->CAPACITEUTILISE}}"  data-target="#edit-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;float:right;">
+              <a href="#test" data-toggle="modal" data-mytitle="{{$article->TITRE}}" data-mydescription="{{$article->DESCRIPTION}}" data-id="{{$article->IDPUBLICATION}}" data-capacite="{{$article->CAPACITEMAX}}" data-nombre="{{$article->CAPACITEUTILISE}}"  data-target="#edit-modal-{{$article->IDPUBLICATION}}" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;float:right;" onclick="myFunction{{$article->IDPUBLICATION}}()">
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 
 
-               <a href="#delete" class="btn btn-secondary a-btn-slide-text"style="float:right;background-color:#eda171;color:white;">
+               <a href="/post/delete/{{$article->IDPUBLICATION}}" class="btn btn-secondary a-btn-slide-text"style="float:right;background-color:#eda171;color:white;">
               <span class="glyphicon glyphicon-trash" aria-hidden="true" ></span></a>
            </p>
             <p style = " overflow: hidden;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical; max-height: 96px;min-height: 96px;   "class="lead">
@@ -322,20 +337,25 @@ font-size: 12px;
 </div>
 
 
-
+<script src="{{asset('js/app.js')}}"></script>
 
 <script type="text/javascript">
 
+
 $('#edit-modal').on('show.bs.modal', function (event) {
-     var button = $(event.relatedTarget)
-     var title = button.data('mytitle')
-     var description = button.data('mydescription')
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var title = button.data('Titre')
+  var description = button.data('Description')
+  var NombrePersonnes = button.data('NombrePersonnes')
 
-     var modal = $(this)
+   // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
      modal.find('.modal-body #Titre').val(title);
-     $("#modal-input-Description").val(description);
-
+     modal.find('.modal-body #Description').val(description);
 })
+
  $('#delete').on('show.bs.modal', function (event) {
      var button = $(event.relatedTarget)
      var cat_id = button.data('catid')
