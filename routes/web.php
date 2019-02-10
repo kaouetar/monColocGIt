@@ -64,4 +64,5 @@ Route::get('/chat', 'HomeController@index')->name('home');
 
 Route::get('/contacts', 'ContactsController@get');
 Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+Route::get('/userimage/{filename}', 'ArticleController@getArticleImage');
 Route::post('/conversation/send', 'ContactsController@send');

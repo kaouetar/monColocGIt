@@ -143,6 +143,7 @@ transition: opacity ease 0.5s;
 font-size: 12px;
 }
 
+
 </style>
 <div id="offers" class="section md-padding">
 
@@ -178,7 +179,7 @@ font-size: 12px;
             	  <div class="modal-dialog">
         				<div class="addmodal-container">
         					<h1>Ajouter une offre</h1><br>
-                        {!! Form::open(['url' => 'create/post/add']) !!}
+                        {!! Form::open(['url' => 'create/post/add','files' => true , 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
                                     {{Form::label('Titre',"Titre")}} {{Form::text('TITRE','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Titre de l\'offre' ])}}
                                 <br>
@@ -203,7 +204,7 @@ font-size: 12px;
                             </fieldset>
                             <br>
                             {{Form::label('Image',"Image")}}
-                            {{Form::file('Image',array('class' => 'image'))}}
+                            {{Form::file('IMAGE',array('class' => 'image'))}}
                   <div class="text-center">
                     <br>
                     <button type="submit" style="background-color:#f7c8aa; margin-left:390px" class="btn btn">
@@ -284,7 +285,7 @@ font-size: 12px;
                               {!! Form::open(['url' => '']) !!}
                       <div class="form-group">
                                   {{Form::label('Image',"Image")}}
-                                  {{Form::file('Image',array('class' => 'Image'.$article->IDPUBLICATION.' image'))}}
+                                  {{Form::file('IMAGE',array('class' => 'Image'.$article->IDPUBLICATION.' image'))}}
                                 </div>
                               {!! Form::close() !!}
                     <div class="text-center">
@@ -303,7 +304,23 @@ font-size: 12px;
                 </div>
 
           <div class="col-lg-4 col-md-4 col-xs-12 desc ">
-            <a class="b-link-fade b-animate-go" href="/offer?id={{$article->IDPUBLICATION}}"> <img width="350" src="img/portfolio/port04.jpg" alt="" />
+              @if (Storage::disk('local')->has('pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'))
+             
+                      <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="#"> 
+                      <img style="
+                          object-fit: cover;
+                          width: 100%;
+                          height: 100%"
+                      src="/userimage/{{'pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'}}" alt="" 
+                      />
+            @else
+               <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="#">  
+                    <img style="object-fit: cover;
+                    width: 100%;
+                    height: 100%" src="img/portfolio/port04.jpg" alt="" />
+
+            @endif
+              
               <div class="b-wrapper">
                   <h4 class="b-from-left b-animate b-delay03">{{$article->TITRE}}</h4>
                   <p class="b-from-right b-animate b-delay03">Read More.</p>

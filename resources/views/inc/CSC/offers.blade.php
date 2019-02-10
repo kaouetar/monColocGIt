@@ -16,7 +16,22 @@
 
 
           <div class="col-lg-4 col-md-4 col-xs-12 desc ">
-            <a class="b-link-fade b-animate-go" href="#"> <img width="350" src="img/portfolio/port04.jpg" alt="" />
+              @if (Storage::disk('local')->has('pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'))
+                      
+                        <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="#"> 
+                        <img style="
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%"
+                        src="/userimage/{{'pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'}}" alt="" 
+                        />
+              @else
+                <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="#">  
+                      <img style="object-fit: cover;
+                      width: 100%;
+                      height: 100%" src="img/portfolio/port04.jpg" alt="" />
+
+              @endif
               <div class="b-wrapper">
                   <h4 class="b-from-left b-animate b-delay03">{{$article->TITRE}}</h4>
                   <p class="b-from-right b-animate b-delay03">Read More.</p>
