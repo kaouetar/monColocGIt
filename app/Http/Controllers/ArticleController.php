@@ -8,6 +8,9 @@ use App\article;
 use Validator;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 
 
 class ArticleController extends Controller
@@ -35,24 +38,7 @@ class ArticleController extends Controller
 
     public function submit(Request $request){
 
-          $rules=[
-            'TITRE' => 'required|between:1,50',
-            'DESCRIPTION' => 'required|between:1,50',
-            'ADRESSE' => 'required|between:5,50',
-            //'Participant1Mail' => 'required|between:5,50|email',
-            //'CoachName' => 'required|between:1,50',
-            //'CoachMail' => 'required|between:5,50|email',
-            //'CoachPhone' => 'required|between:10,20'
-          ];
-
-          $validator = Validator::make($request->all(),$rules );
-
-            if ($validator->fails()) {
-              return "hello";
-              //  return redirect('Ensat_CD#InscriptionComp')
-                        //    ->withErrors($validator)
-                          //  ->withInput();
-            }
+          
           //Create New Message
           $ajoutArticle= new article;
           $ajoutArticle->TITRE= $request->input('TITRE'        );
@@ -65,9 +51,13 @@ class ArticleController extends Controller
           $ajoutArticle->VISIBLE=1;
           $ajoutArticle->DATECREATION= \DB::raw('now()');
           $ajoutArticle->IDUSER=  Auth::id();
-
-
           $ajoutArticle->save();
+          $file = $request->file('IMAGE');
+          $filename = 'pubImg'.$ajoutArticle->IDPUBLICATION.'-user'.$ajoutArticle->IDUSER.'.jpeg';
+          if($request->hasFile('IMAGE')){
+ //           Storage::disk('local') -> put($filename, file_get_contents($file -> getRealPath()));
+            Storage::disk('local') -> put($filename, File::get($file) );
+          }
 
           return redirect('myoffers')->withInput()->with('success','Article ajoutée!');
         }
@@ -79,9 +69,10 @@ class ArticleController extends Controller
         return view('/myofferstest')->with('data',$data);
     }
 
-    public function delete($id)
+    public function getArticleImage($filename)
     {
-
+      $file = Storage::disk('local')->get($filename);
+      return new Response($file, 200);
     }
 
     public function destroy($id) {

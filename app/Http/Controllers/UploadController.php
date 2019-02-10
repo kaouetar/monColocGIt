@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-se Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\article;
 use Validator;
 use App\User;
