@@ -14,6 +14,7 @@
 Route::get('/','MainController@index');
 Route::get('/myoffers','ArticleController@myoffers');
 Route::get('/offers','ArticleController@index');
+Route::get('/vuejs', function(){return view('vuetesting');});
 
 
 Route::get('index.html','MainController@index')->name('');
@@ -42,3 +43,12 @@ Route::get('create/post','ArticleController@getArticleForm');
 Route::post('create/post/add', 'ArticleController@submit');
 
 Route::get('panel','ArticleController@getArticleForm');
+
+
+Auth::routes();
+
+Route::get('/chat', 'HomeController@index')->name('home');
+
+Route::get('/contacts', 'ContactsController@get');
+Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
+Route::post('/conversation/send', 'ContactsController@send');

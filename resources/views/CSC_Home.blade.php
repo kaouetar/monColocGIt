@@ -9,9 +9,9 @@
 
 @section('Background')
 <!-- Background Image -->
-<div class="bg-img" style="background-image: url('https://blog.appartager.com/wp-content/uploads/2013/11/Trousseau-de-cl%C3%A9s-740x357.jpg');">
-	<div class="overlay"></div>
-</div>
+	<div class="bg-img" style="background-image: url('https://blog.appartager.com/wp-content/uploads/2013/11/Trousseau-de-cl%C3%A9s-740x357.jpg');">
+		<div class="overlay"></div>
+	</div>
 <!-- /Background Image -->
 @endsection('Background')
 
