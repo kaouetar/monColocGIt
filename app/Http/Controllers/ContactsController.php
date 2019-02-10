@@ -12,9 +12,24 @@ class ContactsController extends Controller
     public function get()
     {
         // get all users except the authenticated one
-        $contacts = User::where('id', '!=', auth()->id())->whereRaw('id in (select `to` from messages union select `from` from messages)')
-        ->get();
-        
+      /*  $contacts = User::where('users.id', '!=', auth()->id())
+        ->join('messages', 'users.id', '=', 'messages.from')
+        ->where('messages.from' ,'=', auth()->id())
+        ->get();*/
+        $a = \DB::table('Users as u')
+        ->select('U.id','U.name','U.email','U.password','U.admin','U.remember_token', 'U.created_at', 'U.updated_at')
+        ->join('messages','messages.from' ,'=', 'U.id')
+        ->where('U.id', '!=', auth()->id())
+        ->where('messages.to','=', auth()->id());
+
+        $b = \DB::table('Users as u')
+        ->select('U.id','U.name','U.email','U.password','U.admin','U.remember_token', 'U.created_at', 'U.updated_at')
+        ->join('messages','messages.to' ,'=', 'U.id')
+        ->where('U.id', '!=', auth()->id())
+        ->where('messages.from','=', auth()->id());
+
+        $contacts = $a->union($b)->get();
+
         // get a collection of items where sender_id is the user who sent us a message
         // and messages_count is the number of unread messages we have from him
         $unreadIds = Message::select(\DB::raw('`from` as sender_id, count(`from`) as messages_count'))
@@ -24,7 +39,7 @@ class ContactsController extends Controller
             ->get();
 
         // add an unread key to each contact with the count of unread messages
-        $contacts = $contacts->map(function($contact) use ($unreadIds) {
+          $contacts = $contacts->map(function($contact) use ($unreadIds) {
             $contactUnread = $unreadIds->where('sender_id', $contact->id)->first();
 
             $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
