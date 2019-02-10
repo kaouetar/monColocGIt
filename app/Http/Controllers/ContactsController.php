@@ -81,4 +81,18 @@ class ContactsController extends Controller
 
         return response()->json($message);
     }
+
+    
+    public function sendFirst(Request $request, $iduser)
+    {
+        $message = Message::create([
+            'from' => auth()->id(),
+            'to' => $iduser,
+            'text' => $request['MESSAGE']
+        ]);
+
+        broadcast(new NewMessage($message));
+
+        return redirect('/chat');
+    }
 }

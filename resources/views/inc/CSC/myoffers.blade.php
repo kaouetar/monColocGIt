@@ -145,7 +145,7 @@ font-size: 12px;
 
 
 </style>
-<div id="offers" class="section md-padding">
+<div id="offers" class="section " style="background: white;">
 
   <div class="container">
 
@@ -306,7 +306,7 @@ font-size: 12px;
           <div class="col-lg-4 col-md-4 col-xs-12 desc ">
               @if (Storage::disk('local')->has('pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'))
              
-                      <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}> 
+                      <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}"> 
                       <img style="
                           object-fit: cover;
                           width: 100%;
@@ -314,7 +314,7 @@ font-size: 12px;
                       src="/userimage/{{'pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'}}" alt="" 
                       />
             @else
-               <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}>  
+               <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}">  
                     <img style="object-fit: cover;
                     width: 100%;
                     height: 100%" src="img/portfolio/port04.jpg" alt="" />

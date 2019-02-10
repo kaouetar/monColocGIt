@@ -1,5 +1,5 @@
 <!-- About -->
-<div id="offers" class="section ">
+<div id="offers" class="section "  style="background: white;">
 
   <div class="container">
 

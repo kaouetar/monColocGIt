@@ -67,3 +67,5 @@ Route::get('/contacts', 'ContactsController@get');
 Route::get('/conversation/{id}', 'ContactsController@getMessagesFor');
 Route::get('/userimage/{filename}', 'ArticleController@getArticleImage');
 Route::post('/conversation/send', 'ContactsController@send');
+
+Route::post('/conversation/sendFirst/{IDUSER}','ContactsController@sendFirst');
