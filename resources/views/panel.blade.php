@@ -31,21 +31,21 @@
 
 @section('NavigationBar')
 <!--  Main navigation  -->
-<ul class="main-nav nav navbar-nav navbar-right" style="margin-left:50px;">
+<ul class="main-nav nav navbar-nav fixed-top navbar-right" style="margin-left:50px;">
 	<li><a href="/">Accueil</a></li>
 	<li><a href="/#about">A propos de nous</a></li>
 	<li><a href="/#contact">Contact</a></li>
 
 	@guest
-	<li><a href="login">Connexion</a></li>
+	<li><a href="/login">Connexion</a></li>
 	@else
-	<li><a href="offers">Offres Disponibles</a></li>
+	<li><a href="/offers">Offres Disponibles</a></li>
 
 	<li>
       <a style="background-color: none !important;" class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
       <ul class="dropdown-menu">
-				<li><a href="myoffers">{{ __('Mes offres') }}</a></li>
-        <li><a href="settings">{{ __('Paramètres') }}</a></li>
+				<li><a href="/myoffers">{{ __('Mes offres') }}</a></li>
+        <li><a href="/settings">{{ __('Paramètres') }}</a></li>
         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 	 									 document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a></li>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
