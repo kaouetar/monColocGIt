@@ -42,7 +42,7 @@
 	<li><a href="#offers">Offres Disponibles</a></li>
 
 	<li>
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
+      <a style="background-color: none !important;" class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
       <ul class="dropdown-menu">
 				<li><a href="myoffers">{{ __('Mes offres') }}</a></li>
         <li><a href="settings">{{ __('Paramètres') }}</a></li>

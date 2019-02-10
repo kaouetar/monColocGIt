@@ -3,7 +3,7 @@
 <div id="back-to-top"></div>
 <!-- /Back to top -->
 
-<!-- Preloader -->
+<!-- Preloader
 <div id="preloader">
   <div class="preloader">
     <span></span>
@@ -12,19 +12,19 @@
     <span></span>
   </div>
 </div>
-<!-- /Preloader -->
+/Preloader -->
 
 <!-- jQuery Plugins -->
-<script src="tools/jquery/jquery-3.2.1.min.js"></script>
-<script src="tools/bootstrap/js/popper.js"></script>
-<script src="tools/select2/select2.min.js"></script>
+<script src="/tools/jquery/jquery-3.2.1.min.js"></script>
+<script src="/tools/bootstrap/js/popper.js"></script>
+<script src="/tools/select2/select2.min.js"></script>
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script src="tools/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script type="/text/javascript" src="/js/jquery.min.js"></script>
+<script type="/text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="/text/javascript" src="/js/owl.carousel.min.js"></script>
+<script type="/text/javascript" src="/js/jquery.magnific-popup.js"></script>
+<script type="/text/javascript" src="/js/main.js"></script>
+<script src="/tools/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
   $('.js-pscroll').each(function(){
     var ps = new PerfectScrollbar(this);

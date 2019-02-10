@@ -20,7 +20,13 @@ class ArticleController extends Controller
 
         return view('/offerstest')->with('data',$data);
     }
+    public function offerDetails($idpub) {
+        $data = article::orderBy('DATECREATION', 'desc')
+        ->join('users', 'users.id', '=', 'publicationlogement.iduser')->where('publicationlogement.visible',1)
+        ->where('publicationlogement.idpublication','=',$idpub)->first();
 
+        return view('panel')->with('data',$data);
+    }
 
     public function getArticleForm()
     {

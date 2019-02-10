@@ -11,8 +11,8 @@
         <!-- Logo -->
         <div class="navbar-brand">
           <a href="/">
-            <img class="logo-alt" src="images\icons\icons8_Home_35px.png" alt="logo">
-            <img class="logo" src="images\icons\icons8_Home_35px.png" alt="logo">
+            <img class="logo-alt" src="\images\icons\icons8_Home_35px.png" alt="logo">
+            <img class="logo" src="\images\icons\icons8_Home_35px.png" alt="logo">
           </a>
         </div>
         <!-- /Logo -->

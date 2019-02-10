@@ -16,7 +16,7 @@
 
 
           <div class="col-lg-4 col-md-4 col-xs-12 desc ">
-            <a class="b-link-fade b-animate-go" href="#"> <img width="350" src="img/portfolio/port04.jpg" alt="" />
+            <a class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}"> <img width="350" src="img/portfolio/port04.jpg" alt="" />
               <div class="b-wrapper">
                   <h4 class="b-from-left b-animate b-delay03">{{$article->TITRE}}</h4>
                   <p class="b-from-right b-animate b-delay03">Read More.</p>

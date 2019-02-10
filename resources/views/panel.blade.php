@@ -1,23 +1,24 @@
-@extends('layouts.CSC')
+@section('title','RentIK')
+@section('headerID','')
 
 @section('stylesheet')
-<link type="text/css" rel="stylesheet" href="css/style.css" />
-<script src="{{ asset('js/app.js') }}" defer></script>
-<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="/css/style.css" />
+<script src="{{ asset('/js/app.js') }}" defer></script>
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animations/animations.css" rel="stylesheet">
-  <link href="lib/hover-pack/hover-pack.css" rel="stylesheet">
+  <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/lib/animations/animations.css" rel="stylesheet">
+  <link href="/lib/hover-pack/hover-pack.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style2.css" rel="stylesheet">
-  <link href="css/colors/color-74c9be.css" rel="stylesheet">
+  <link href="/css/style2.css" rel="stylesheet">
+  <link href="/css/colors/color-74c9be.css" rel="stylesheet">
 
-	<script src="lib/jquery/jquery.min.js"></script>
- <script src="lib/bootstrap/js/bootstrap.min.js"></script>
- <script src="lib/php-mail-form/validate.js"></script>
- <script src="lib/hover-pack/hover-pack.js"></script>
+	<script src="/lib/jquery/jquery.min.js"></script>
+ <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+ <script src="/lib/php-mail-form/validate.js"></script>
+ <script src="/lib/hover-pack/hover-pack.js"></script>
 @endsection('stylesheet')
 
 @section('Background')
@@ -41,7 +42,7 @@
 	<li><a href="offers">Offres Disponibles</a></li>
 
 	<li>
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
+      <a style="background-color: none !important;" class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
       <ul class="dropdown-menu">
 				<li><a href="myoffers">{{ __('Mes offres') }}</a></li>
         <li><a href="settings">{{ __('Paramètres') }}</a></li>
@@ -87,62 +88,16 @@
 <!-- /Main navigation -->
 @endsection('NavigationBar')
 
-@section('content')
-<div class="container" style="margin-top:30px;">
+@section('HomeContent')
 
-    <div class="row justify-content-left">
-        <div class="col-md-6">
-
-            <div class="card">
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-
-
-                    @endif
-
-                    {!! Form::open(['url' => 'create/post/add']) !!}
-						<div class="form-group">
-                                {{Form::label('Titre',"Titre de l'offre")}}
-                                {{Form::text('Titre','',['class' => 'form-control' , 'placeholder' => 'Titre' ] )}}
-                            <br>
-                                {{Form::label('Nombre de personnes','Nombre de colocataires')}}
-							    {{Form::text('NombrePersonnes','',['class' => 'form-control' , 'placeholder' => 'Nombre de personnes' ] )}}
-                            <br>
-                                <fieldset>
-								{{Form::label('Description','Description')}}
-								{{Form::textarea('Description','',['class' => 'form-control' , 'placeholder' => 'Décrivez votre offre' ] )}}
-							</fieldset>
-								<br>
-                <fieldset>
-{{Form::label('Adresse','Adresse')}}
-{{Form::textarea('Adresse','',['class' => 'form-control' , 'placeholder' => 'Votre adresse ' ] )}}
-</fieldset>
-							<div class="text-center">
-								<br>
-                <button type="submit" style="background-color:#f7c8aa; margin-left: 100px;" class="btn btn">
-                    {{ __('Créer Offre') }}
-                </button>
-
-							</div>
-						</div>
-
-					{!! Form::close() !!}
-
-
-                </div>
-                <div class="row justify-content-right">
-                    <div class="col-md-4">
-                      <a href="#">Hello</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
+<!-- /home content -->
 @endsection
+
+
+@extends('layouts.CSC')
+
+@section('content')
+
+  @include('inc.offerpageismael')
+
+@endsection('content')
