@@ -86,11 +86,12 @@
 </ul>
 <!-- /Main navigation -->
 @endsection('NavigationBar')
-@section('content')
-<div class="container">
 
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+@section('content')
+<div class="container" style="margin-top:30px;">
+
+    <div class="row justify-content-left">
+        <div class="col-md-6">
 
             <div class="card">
 
@@ -122,7 +123,7 @@
 </fieldset>
 							<div class="text-center">
 								<br>
-                <button type="submit" style="background-color:#f7c8aa; margin-left: 70px;" class="btn btn">
+                <button type="submit" style="background-color:#f7c8aa; margin-left: 100px;" class="btn btn">
                     {{ __('Créer Offre') }}
                 </button>
 
@@ -133,8 +134,13 @@
 
 
                 </div>
-
+                <div class="row justify-content-right">
+                    <div class="col-md-4">
+                      <a href="#">Hello</a>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 

@@ -20,6 +20,17 @@ Route::get('index.html','MainController@index')->name('');
 
 Route::get('Ensat_CD', 'InscriptionsCPC_Controller@getData');
 
+Route::group(['middleware' => 'web'], function () {
+
+Route::get('fileUpload', function () {
+
+    return view('fileUpload');
+
+});
+
+Route::post('fileUpload', ['as'=>'fileUpload','uses'=>'HomeController@fileUpload']);
+});
+
 Route::post('inscriptionCPC/submit', 'InscriptionsCPC_Controller@submit');
 
 Route::post('contactus/submit', 'contactus_Controller@submitHome');
@@ -37,8 +48,12 @@ Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
     return "this page requires that you be logged in and an Admin";
 }]);
 
-Route::get('create/post','ArticleController@getArticleForm');
+//Route::get('create/post','ArticleController@getArticleForm');
 
+//Route::post('myoffers', 'ArticleController@submit');
 Route::post('create/post/add', 'ArticleController@submit');
+Route::post('create/post/delete/{id}', 'ArticleController@destroy');
+Route::post('create/post/update/{id}', 'ArticleController@update');
 
 Route::get('panel','ArticleController@getArticleForm');
+Route::get('paneltest','ArticleController@getArticleForm');
