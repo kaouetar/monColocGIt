@@ -183,10 +183,10 @@ font-size: 12px;
                                     {{Form::label('Titre',"Titre")}} {{Form::text('TITRE','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Titre de l\'offre' ])}}
                                 <br>
                                     {{Form::label('Nombre actuel','Nombre')}}
-                                    {{Form::number('CAPACITEUTILISE','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Nombre de colocataires' ])}}
+                                    {{Form::number('CAPACITEUTILISE','',['min'=>0,'required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Nombre de colocataires' ])}}
                                 <br>
                                 {{Form::label('Capacité','Nombre')}}
-                                {{Form::number('CAPACITEMAX','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Capacité maximale' ])}}
+                                {{Form::number('CAPACITEMAX','',['min'=>1,'required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Capacité maximale' ])}}
                                 <br>
                                 {{Form::label('Prix',"Prix / moix")}}
                                 {{Form::text('PRIXMENSUEL','',['required' => 'required' ,'class' => 'form-control' , 'placeholder' => 'Prix mensuel' ] )}}
@@ -262,10 +262,10 @@ font-size: 12px;
                                       {{Form::text('Titre','',['id'=>'Titre','class' => 'Titre'.$article->IDPUBLICATION.' form-control'  ] )}}
                                   <br>
                                       {{Form::label('Nombre actuel','Nombre')}}
-                                      {{Form::number('CAPACITEUTILISE','',['id'=>'NombrePersonnes','class' => 'Capaciteutil'.$article->IDPUBLICATION.' form-control' ] )}}
+                                      {{Form::number('CAPACITEUTILISE','',['min'=>0,'id'=>'NombrePersonnes','class' => 'Capaciteutil'.$article->IDPUBLICATION.' form-control' ] )}}
                                   <br>
                                       {{Form::label('Capacité','Nombre')}}
-                                      {{Form::number('CAPACITEMAX','',['id'=>'Capacité','class' => 'Capacitemax'.$article->IDPUBLICATION.' form-control' , 'placeholder' => 'Capacité maximale' ] )}}
+                                      {{Form::number('CAPACITEMAX','',['min'=>1,'id'=>'Capacité','class' => 'Capacitemax'.$article->IDPUBLICATION.' form-control' , 'placeholder' => 'Capacité maximale' ] )}}
                                   <br>
                                       {{Form::label('Prix',"Prix / moix")}}
                                       {{Form::text('PRIXMENSUEL','',['id'=>'Prix','class' => 'Prix'.$article->IDPUBLICATION.' form-control' , 'placeholder' => 'Prix mensuel' ] )}}
