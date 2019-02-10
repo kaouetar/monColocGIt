@@ -218,23 +218,39 @@ body {
 		<div class="col-md-8">
             <div class="profile-content">
 			   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<div class="container">
+<div class="container"  style="
+object-fit: cover;
+width: 100%;">
 
     <div class="fb-profile">
-      <div class="row">
-       <div class="col-sm">
-        <img align="left" class="fb-image-lg" src="https://images.prop24.com/199025065/Crop481x298" alt="House"/>
-      </div>
+       <div class="row">
+
+          @if (Storage::disk('local')->has('pubImg'.$data->IDPUBLICATION.'-user'.$data->IDUSER.'.jpeg'))
+
+             <div class="col-sm" >
+              <img style="
+              object-fit: cover;
+              width: 100%;
+              height: 500px" align="center" class="fb-image-lg" src="/userimage/{{'pubImg'.$data->IDPUBLICATION.'-user'.$data->IDUSER.'.jpeg'}}"  alt="House"/>
+            </div>
+
+          @else
+            <div class="col-sm">
+            <img align="left" class="fb-image-lg" src="https://images.prop24.com/199025065/Crop481x298" alt="House"/>
+            </div>
+          @endif
+
+     </div>
     </div>
 
         <div class="fb-profile-text">
           <div class="row" >
-           <div class="col-sm-5" >
+           <div class="" >
             <h1>{{$data->TITRE}}</h1>
         </div>
       </div>
       <div class="row">
-       <div class="col-sm-7">
+       <div class="">
         <p>{{$data->DESCRIPTION}} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
   </div>
