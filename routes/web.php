@@ -15,6 +15,7 @@ Route::get('/','MainController@index');
 Route::get('/myoffers','ArticleController@myoffers');
 Route::get('/offers','ArticleController@index');
 Route::get('/vuejs', function(){return view('vuetesting');});
+Route::get('/offerpageismael', function(){return view('inc\offerpageismael');});
 
 
 Route::get('index.html','MainController@index')->name('');
