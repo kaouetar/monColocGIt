@@ -6,6 +6,7 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+
   <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animations/animations.css" rel="stylesheet">
@@ -47,7 +48,7 @@
 				<li><a href="/myoffers">{{ __('Mes offres') }}</a></li>
         <li><a href="/profile/{{Auth::user()->id}}">{{ __('Profil') }}</a></li>
         <li><a href="/chat">{{ __('Messages') }}</a></li>
-        
+
         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 	 									 document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a></li>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -103,7 +104,7 @@
 @extends('layouts.CSC')
 @section('content')
 
-@include('inc.CSC.offers')
+@include('home')
 
 
 @endsection('content')
