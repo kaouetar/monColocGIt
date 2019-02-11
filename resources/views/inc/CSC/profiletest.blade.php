@@ -9,6 +9,7 @@ a.btn:hover {
    -moz-transform: scale(1.1);
    -o-transform: scale(1.1);
 }
+
 .addmodal-container, .editmodal-container {
 text-align: center;
 display:inline-block;
@@ -151,7 +152,7 @@ font-size: 12px;
         <div class="modal-dialog">
         <div class="addmodal-container">
           <h4 style="text-align:center;">Modifier Mot de passe</h4> <br>
-          <form method="post" action="{{route('users.update', $data)}}">
+          <form method="POST" action="{{route('users.update')}}">
                         <input id="newpass" name="newpass" placeholder="Nouveau mot de passe" class="form-control" type="password">
                         <br>
                         <input id="confirmnewpass" name="confirmnewpass" placeholder="Confirmer Nouveau mot de passe" class="form-control" type="password">
@@ -174,20 +175,20 @@ font-size: 12px;
   <div class="modal-dialog">
   <div class="addmodal-container">
     <h4 style="text-align:center;">Modifier Informations</h4> <br>
-    <form method="post" action="{{route('users.update', $data)}}">
+    <form method="POST" action="{{route('users.update')}}">
           <div class="form-group" align="center">
-                <input id="name" name="name" placeholder="Full name" class="form-control here" required="required" type="text" value="{{  $data->name }}" readonly>
+                <input id="name" name="name" placeholder="Full name" class="form-control here" required="required" type="text" value="{{ $data->name }}" readonly>
               <br>
                 <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" value="{{  $data->email }}" readonly>
               <br>
                 <input id="telephone" name="telephone" placeholder="Telephone" class="form-control here" required="required" type="text" value="{{  $data->telephone }}" >
                 <br>
-                <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
+                <textarea id="info" name="info" cols="40" rows="4" class="form-control"></textarea>
                 <br>
 
                <div class="form-group row">
                  <div class="offset-4 col-8"  style="color : #868F9B" >
-                  <button name="submit" type="submit" class="btn btn-secondary" style="color:black;">Sauvgarder Updates</button>
+                  <button name="submit" type="submit" class="btn btn-secondary" style="color:black;">Sauvegarder </button>
                  </div>
                </div>
           </div>

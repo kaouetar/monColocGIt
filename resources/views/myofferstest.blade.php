@@ -2,23 +2,23 @@
 @section('headerID','')
 
 @section('stylesheet')
-<link type="text/css" rel="stylesheet" href="css/style.css" />
-<script src="{{ asset('/js/app.js') }}" defer></script>
-<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="/css/style.css" />
+<script src="{{ asset('js/app.js') }}" defer></script>
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animations/animations.css" rel="stylesheet">
-  <link href="lib/hover-pack/hover-pack.css" rel="stylesheet">
+  <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/lib/animations/animations.css" rel="stylesheet">
+  <link href="/lib/hover-pack/hover-pack.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style2.css" rel="stylesheet">
-  <link href="css/colors/color-74c9be.css" rel="stylesheet">
+  <link href="/css/style2.css" rel="stylesheet">
+  <link href="/css/colors/color-74c9be.css" rel="stylesheet">
 
-	<script src="lib/jquery/jquery.min.js"></script>
- <script src="lib/bootstrap/js/bootstrap.min.js"></script>
- <script src="lib/php-mail-form/validate.js"></script>
- <script src="lib/hover-pack/hover-pack.js"></script>
+	<script src="/lib/jquery/jquery.min.js"></script>
+ <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+ <script src="/lib/php-mail-form/validate.js"></script>
+ <script src="/lib/hover-pack/hover-pack.js"></script>
 @endsection('stylesheet')
 
 @section('Background')

@@ -23,8 +23,8 @@ Route::get('index.html','MainController@index')->name('');
 
 Route::get('/profile/{id}','UserController@profile');
 
-Route::get('/settings/{id}',  ['as' => 'users.edit', 'uses' => 'UserController@edit']);
-Route::patch('/profile/{id}/update',  ['as' => 'users.update', 'uses' => 'UserController@update']);
+Route::get('/profile/edit',  ['as' => 'users.edit', 'uses' => 'UserController@edit']);
+Route::post('/profile/update',  ['as' => 'users.update', 'uses' => 'UserController@update']);
 
 Route::get('Ensat_CD', 'InscriptionsCPC_Controller@getData');
 
