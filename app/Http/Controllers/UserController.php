@@ -37,9 +37,11 @@ class UserController extends Controller
 
   public function update(Request $request)
   {
-        $req = request()->except(['_token','submit']);
-
-      $user=user::where('ID', auth()->id())->update($req);
+        $req = request()->except(['_token','submit','confirmnewpass']);
+        //\Hash::make($req['password']);
+        if($request->has('password')) $req['password'] =  \Hash::make($req['password']);
+        else return "false";
+       $user=user::where('ID', auth()->id())->update($req);
 
       return redirect('/profile/'. auth()->id())->with('message', 'Infos has been updated!');
 

@@ -147,17 +147,42 @@ font-size: 12px;
 
 </style>
 
+<script>
+  function mySubmitFunction(e) {
+    if( $('#password').val() == $('#confirmnewpass').val()){
+      return true;
+    }else{
+      $('#password').before('<div id="divAlertTobeDeleted" class="alert alert-danger" role="alert">  Les mots de passes ne correspondent pas! </div> ');
+      e.preventDefault();
+      return false;
+    }
+  }
+
+  function deleteAlertWrongPassword(){
+    $('#divAlertTobeDeleted').remove()
+    $('#password').val('')
+    $('#confirmnewpass').val('')
+  }
+ </script>
+
 
 <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
         <div class="addmodal-container">
           <h4 style="text-align:center;">Modifier Mot de passe</h4> <br>
-          <form method="POST" action="{{route('users.update')}}">
-                        <input id="newpass" name="newpass" placeholder="Nouveau mot de passe" class="form-control" type="password">
+
+          
+
+          <form class='.testingadddiv' method="POST" action="{{route('users.update')}}" onsubmit="return mySubmitFunction(event)">
+        {{ csrf_field() }}
+        
+                                           
+                        <input id="password" name="password" placeholder="Nouveau mot de passe" class="form-control" type="password">
                         <br>
                         <input id="confirmnewpass" name="confirmnewpass" placeholder="Confirmer Nouveau mot de passe" class="form-control" type="password">
                         <br>
-                        <button name="submit" type="submit" class="btn btn-secondary" >Modifier mot de passe</button>
+                        <button input name="submit" type="submit" class="btn btn-secondary" >Modifier mot de passe</button>
+                        
 
               </form>
 
@@ -232,7 +257,7 @@ font-size: 12px;
                         <br>
                         <a href="#test" onclick="myFunctionUpdateProfile()"  data-toggle="modal" data-target="#edit-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;;" >
                         <span class="glyphicon glyphicon-edit" aria-hidden="true">Modifier infos</span></a> <br> <br>
-                        <a href="#test" data-toggle="modal" data-target="#add-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;" >
+                        <a href="#test" onclick="deleteAlertWrongPassword()" data-toggle="modal" data-target="#add-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;" >
                         <span class="glyphicon glyphicon-edit" aria-hidden="true">Changer mot de passe</span></a>
 
 
