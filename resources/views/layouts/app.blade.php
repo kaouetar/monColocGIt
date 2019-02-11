@@ -77,7 +77,6 @@ font-size: 110%;
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="/myoffers">{{ __('Mes offres') }}</a>
-                                  <a class="dropdown-item" href="/profile/{{Auth::user()->id}}">{{ __('Profil') }}</a>
                                   <a class="dropdown-item" href="/chat">{{ __('Messages') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

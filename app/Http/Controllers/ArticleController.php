@@ -38,7 +38,7 @@ class ArticleController extends Controller
 
     public function submit(Request $request){
 
-          
+
           //Create New Message
           $ajoutArticle= new article;
           $ajoutArticle->TITRE= $request->input('TITRE'        );
@@ -66,7 +66,7 @@ class ArticleController extends Controller
         $data = article::orderBy('DATECREATION', 'desc')
         ->join('users', 'users.id', '=', 'publicationlogement.iduser')->where('users.id',Auth::id())->get();
 
-        return view('/myofferstest')->with('data',$data);
+        return view('/profile')->with('data',$data);
     }
 
     public function getArticleImage($filename)
