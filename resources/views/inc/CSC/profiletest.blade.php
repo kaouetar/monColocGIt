@@ -151,6 +151,7 @@ font-size: 12px;
     if( $('#password').val() == $('#confirmnewpass').val()){
       return true;
     }else{
+      $('#divAlertTobeDeleted').remove();
       $('#password').before('<div id="divAlertTobeDeleted" class="alert alert-danger" role="alert">  Les mots de passes ne correspondent pas! </div> ');
       e.preventDefault();
       return false;
