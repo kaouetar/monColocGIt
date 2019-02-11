@@ -59351,7 +59351,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.feed[data-v-32dd5c7e] {\n  background: #f0f0f0;\n  height: 100%;\n  max-height: 500px;\n  min-height: 500px;\n  overflow-y: scroll;\n}\n.feed ul[data-v-32dd5c7e] {\n    margin-left: 10px;\n    margin-right: 10px;\n    list-style-type: none;\n    padding: 5px;\n}\n.feed ul li[data-v-32dd5c7e] {\n      margin: 50px;\n}\n.feed ul li.message[data-v-32dd5c7e] {\n        margin: 10px 0;\n        width: 100%;\n}\n.feed ul li.message .text[data-v-32dd5c7e] {\n          max-width: 400px;\n          border-radius: 10px;\n          padding: 12px;\n          display: inline-block;\n}\n.feed ul li.message.received[data-v-32dd5c7e] {\n          text-align: right;\n}\n.feed ul li.message.received .text[data-v-32dd5c7e] {\n            background: #b2b2b2;\n}\n.feed ul li.message.sent[data-v-32dd5c7e] {\n          text-align: left;\n}\n.feed ul li.message.sent .text[data-v-32dd5c7e] {\n            background: #81c4f9;\n}\n", ""]);
+exports.push([module.i, "\n.feed[data-v-32dd5c7e] {\n  background: #f0f0f0;\n  height: 100%;\n  max-height: 500px;\n  min-height: 500px;\n  overflow-y: scroll;\n}\n.feed ul[data-v-32dd5c7e] {\n    margin-left: 10px;\n    margin-right: 10px;\n    list-style-type: none;\n    padding: 5px;\n}\n.feed ul li[data-v-32dd5c7e] {\n      margin: 50px;\n}\n.feed ul li.message[data-v-32dd5c7e] {\n        margin: 10px 0;\n        width: 100%;\n}\n.feed ul li.message .text[data-v-32dd5c7e] {\n          max-width: 400px;\n          border-radius: 10px;\n          padding: 12px;\n          display: inline-block;\n}\n.feed ul li.message.received[data-v-32dd5c7e] {\n          text-align: right;\n}\n.feed ul li.message.received .text[data-v-32dd5c7e] {\n            background: lightgrey;\n}\n.feed ul li.message.sent[data-v-32dd5c7e] {\n          text-align: left;\n}\n.feed ul li.message.sent .text[data-v-32dd5c7e] {\n            background: darksalmon;\n}\n", ""]);
 
 // exports
 
@@ -59837,7 +59837,11 @@ var render = function() {
           [
             _c("div", { staticClass: "avatar" }, [
               _c("img", {
-                attrs: { src: contact.profile_image, alt: contact.name }
+                attrs: {
+                  src:
+                    "https://icons-for-free.com/free-icons/png/512/2540590.png",
+                  alt: contact.name
+                }
               })
             ]),
             _vm._v(" "),

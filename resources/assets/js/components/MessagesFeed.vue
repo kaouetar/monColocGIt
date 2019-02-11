@@ -70,7 +70,7 @@
                     text-align: right;
 
                     .text {
-                        background: #b2b2b2;
+                        background: lightgrey;
                     }
                 }
 
@@ -78,7 +78,7 @@
                     text-align: left;
 
                     .text {
-                        background: #81c4f9;
+                        background: darksalmon;
                     }
                 }
             }

@@ -176,14 +176,16 @@ font-size: 12px;
   <div class="addmodal-container">
     <h4 style="text-align:center;">Modifier Informations</h4> <br>
     <form method="POST" action="{{route('users.update')}}">
+      {{ csrf_field() }}
+
           <div class="form-group" align="center">
-                <input id="name" name="name" placeholder="Full name" class="form-control here" required="required" type="text" value="{{ $data->name }}" readonly>
+                <input id="name" name="name" placeholder="Full name" class="edit-name form-control here" required="required" type="text" value="{{ $data->name }}" readonly>
               <br>
-                <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" value="{{  $data->email }}" readonly>
+                <input id="email" name="email" placeholder="Email" class="edit-email form-control here" required="required" type="text" value="{{  $data->email }}" readonly>
               <br>
-                <input id="telephone" name="telephone" placeholder="Telephone" class="form-control here" required="required" type="text" value="{{  $data->telephone }}" >
+                <input id="telephone" name="telephone" placeholder="Telephone" class="edit-telephone form-control here" required="required" type="text" value="{{  $data->telephone }}" >
                 <br>
-                <textarea id="info" name="info" cols="40" rows="4" class="form-control"></textarea>
+                <textarea id="info" name="info" cols="40" rows="4" class="edit-info form-control"  >{{  $data->info }}</textarea>
                 <br>
 
                <div class="form-group row">
@@ -228,7 +230,7 @@ font-size: 12px;
                             <i class="glyphicon glyphicon-list-alt"></i>  {{$data->info}}</p>
                         <!-- Split button -->
                         <br>
-                        <a href="#test" data-toggle="modal" data-target="#edit-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;;" >
+                        <a href="#test" onclick="myFunctionUpdateProfile()"  data-toggle="modal" data-target="#edit-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;;" >
                         <span class="glyphicon glyphicon-edit" aria-hidden="true">Modifier infos</span></a> <br> <br>
                         <a href="#test" data-toggle="modal" data-target="#add-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;" >
                         <span class="glyphicon glyphicon-edit" aria-hidden="true">Changer mot de passe</span></a>
@@ -241,3 +243,17 @@ font-size: 12px;
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+  function myFunctionUpdateProfile() {
+      var xd = {!! json_encode($data->toArray()) !!};
+      console.log(xd);
+      var title = $(".edit-name" ).val(xd.name);
+      var title = $(".edit-email" ).val(xd.email);
+      var title = $(".edit-telephone" ).val(xd.telephone);
+      var title = $(".edit-info" ).val(xd.info);
+
+     
+  }
+  </script>
