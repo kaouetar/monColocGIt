@@ -176,18 +176,18 @@ font-size: 12px;
         <div class="editpwdmodal-container">
           <h4 style="text-align:center;">Modifier Mot de passe</h4> <br>
 
-          
+
 
           <form class='.testingadddiv' method="POST" action="{{route('users.update')}}" onsubmit="return mySubmitFunction(event)">
         {{ csrf_field() }}
-        
-                                           
+
+
                         <input id="password" name="password" placeholder="Nouveau mot de passe" class="form-control" type="password">
                         <br>
                         <input id="confirmnewpass" name="confirmnewpass" placeholder="Confirmer Nouveau mot de passe" class="form-control" type="password">
                         <br>
                         <button input name="submit" type="submit" class="btn btn-secondary" >Modifier mot de passe</button>
-                        
+
 
               </form>
 
@@ -209,13 +209,13 @@ font-size: 12px;
       {{ csrf_field() }}
 
           <div class="form-group" align="center">
-                <input id="name" name="name" placeholder="Full name" class="edit-name form-control here" required="required" type="text" value="{{ $data->name }}" readonly>
+                <input id="name" name="name" placeholder="Full name" class="edit-name form-control here" required="required" type="text" value="{{ Auth::user()->name }}" readonly>
               <br>
-                <input id="email" name="email" placeholder="Email" class="edit-email form-control here" required="required" type="text" value="{{  $data->email }}" readonly>
+                <input id="email" name="email" placeholder="Email" class="edit-email form-control here" required="required" type="text" value="{{  Auth::user()->email }}" readonly>
               <br>
-                <input id="telephone" name="telephone" placeholder="Telephone" class="edit-telephone form-control here" required="required" type="text" value="{{  $data->telephone }}" >
+                <input id="telephone" name="telephone" placeholder="Telephone" class="edit-telephone form-control here" required="required" type="text" value="{{  Auth::user()->telephone }}" >
                 <br>
-                <textarea id="info" name="info" cols="40" rows="4" class="edit-info form-control"  >{{  $data->info }}</textarea>
+                <textarea id="info" name="info" cols="40" rows="4" class="edit-info form-control"  >{{  Auth::user()->info }}</textarea>
                 <br>
 
                <div class="form-group row">
@@ -260,9 +260,9 @@ font-size: 12px;
                             <i class="glyphicon glyphicon-list-alt"></i>  {{Auth::user()->info}}</p>
                         <!-- Split button -->
                         <br>
-                        <a href="#test" onclick="myFunctionUpdateProfile()"  data-toggle="modal" data-target="#edit-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;;" >
+                        <a href="#test" onclick="myFunctionUpdateProfile()"  data-toggle="modal" data-target="#edit-info-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;;" >
                         <span class="glyphicon glyphicon-edit" aria-hidden="true">Modifier infos</span></a> <br> <br>
-                        <a href="#test" onclick="deleteAlertWrongPassword()" data-toggle="modal" data-target="#add-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;" >
+                        <a href="#test" onclick="deleteAlertWrongPassword()" data-toggle="modal" data-target="#edit-pwd-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;" >
                         <span class="glyphicon glyphicon-edit" aria-hidden="true">Changer mot de passe</span></a>
 
 
@@ -277,14 +277,14 @@ font-size: 12px;
 
 <script type="text/javascript">
   function myFunctionUpdateProfile() {
-      var xd = {!! json_encode($data->toArray()) !!};
+      var xd = {!! json_encode(Auth::user()->toArray()) !!};
       console.log(xd);
       var title = $(".edit-name" ).val(xd.name);
       var title = $(".edit-email" ).val(xd.email);
       var title = $(".edit-telephone" ).val(xd.telephone);
       var title = $(".edit-info" ).val(xd.info);
 
-     
+
   }
   </script>
 <div id="offers" class="section " style="background: white;">
@@ -399,7 +399,7 @@ font-size: 12px;
                     }
                     </script>
                     <h1>Modifier l'offre</h1><br>
-                          {!! Form::open(['url' => 'create/post/update/'.$article->IDPUBLICATION]) !!}
+                          {!! Form::open(['url' => 'create/post/update/'.$article->IDPUBLICATION, 'files' => true , 'enctype' => 'multipart/form-data']) !!}
                   <div class="form-group">
                                       {{Form::label('Titre',"Titre")}}
                                       {{Form::text('Titre','',['id'=>'Titre','class' => 'Titre'.$article->IDPUBLICATION.' form-control'  ] )}}
@@ -424,12 +424,10 @@ font-size: 12px;
                                   {{Form::textarea('ADRESSE','',['id'=>'Adresse','class' => 'Adresse'.$article->IDPUBLICATION.' form-control' , 'placeholder' => 'Votre adresse ' ] )}}
                               </fieldset>
                               <br>
-                              {!! Form::open(['url' => '']) !!}
                       <div class="form-group">
                                   {{Form::label('Image',"Image")}}
                                   {{Form::file('IMAGE',array('class' => 'Image'.$article->IDPUBLICATION.' image'))}}
                                 </div>
-                              {!! Form::close() !!}
                     <div class="text-center">
                       <br>
                       <button type="submit" style="background-color:#f7c8aa; margin-left:390px" class="btn btn">

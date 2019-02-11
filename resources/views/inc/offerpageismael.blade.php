@@ -27,28 +27,28 @@ Licensed under MIT
   width: 100% !important;
   background-color:white;
   margin: 0 auto;
-  
+
   border-radius:5px;
   /*box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);*/
   overflow: hidden;
   font-family: roboto;
   box-shadow: 0px 0px 20px rgba(56,56,56,.2);
   }
-  
+
   .addmodal-container h1, .editmodal-container h1 {
   text-align: center;
   font-size: 1.8em;
-  
+
   color: black;
   font-family: Signika, serif !important;
   font-size: 35px;
   font-weight: normal;
   line-height: 48px;
   margin: 0;
-  
+
   }
-  
-  
+
+
   .addmodal-container label, .editmodal-container label {
     margin: 0;
     padding: 0;
@@ -60,53 +60,53 @@ Licensed under MIT
     text-align: left;
     float: left;
   }​
-  
+
   .addmodal-container input[type=submit], .editmodal-container input[type=submit] {
-  
+
   width: 100%;
   display: block;
   margin-bottom: 10px;
   position: relative;
-  
+
   }
-  
-  
-  
+
+
+
   .addmodal-container textarea, .editmodal-container textarea {
       width:80%;
       border: none;
       background: #F4F4F4;
       border-bottom: 2px solid #EEE;
-  
+
       padding: 0px 10px;
       opacity: 1;
       -webkit-transition: 0.2s border-color, 0.2s opacity;
       transition: 0.2s border-color, 0.2s opacity;
-  
-  
+
+
   }
   .addmodal-container textarea:focus, textarea:active, .editmodal-container textarea:focus, textarea:active{
         border-bottom: 2px solid #eda171;
         color: black  ;
   }
-  
+
   .addmodal-container input[type=number],.editmodal-container input[type=number] {
     width: 80%;
   }
-  
+
   .addmodal-container input[type=text], .editmodal-container input[type=text] {
     width: 80%;
   }
-  
+
   .addmodal-container input[type=text]:hover, .editmodal-container input[type=text]:hover {
-  
+
   border: 1px solid #b9b9b9;
   border-top: 1px solid #a0a0a0;
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   }
-  
+
   .addmodal, .editmodal {
   text-align: left;
   font-size: 14px;
@@ -118,7 +118,7 @@ Licensed under MIT
   /* -webkit-user-select: none;
   user-select: none; */
   }
-  
+
   .addmodal-submit,.editmodal-submit {
   /* border: 1px solid #3079ed; */
   border: 0px;
@@ -130,7 +130,7 @@ Licensed under MIT
   font-size: 14px;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
   }
-  
+
   .addmodal-submit:hover, .editmodal-submit:hover {
   /* border: 1px solid #2f5bb7; */
   border: 0px;
@@ -138,7 +138,7 @@ Licensed under MIT
   background-color: #357ae8;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
   }
-  
+
   .addmodal-container a, .editmodal-container a {
   text-decoration: none;
   color: #666;
@@ -148,12 +148,12 @@ Licensed under MIT
   opacity: 0.6;
   transition: opacity ease 0.5s;
   }
-  
+
   .add-help, .edit-help{
   font-size: 12px;
   }
-  
-  
+
+
   </style>
 
 <style>
@@ -378,13 +378,13 @@ width: 100%;">
       <h1>Modifier l'offre</h1><br>
             {!! Form::open(['url' => '/conversation/sendFirst/'.$data->IDUSER]) !!}
     <div class="form-group">
-                       
+
                 <fieldset>
                     {{Form::label('Message','Message')}}
                     {{Form::textarea('MESSAGE','',['id'=>'Message','class' => ' form-control' , 'placeholder' => 'Votre message ' ] )}}
                 </fieldset>
                 <br>
-               
+
                 {!! Form::close() !!}
       <div class="text-center">
         <br>
@@ -419,7 +419,7 @@ width: 100%;">
             <img style="
             object-fit: cover;
             width: 100%;
-            height: 500px" align="center"  class="fb-image-lg" src="https://images.prop24.com/199025065/Crop481x298" alt="House"/>
+            height: 500px" align="center"  class="fb-image-lg" src="/img/portfolio/port04.jpg" alt="House"/>
             </div>
           @endif
 

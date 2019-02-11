@@ -84,8 +84,21 @@ class ArticleController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $req = request()->except(['_token','Image']);
-        $article=article::where('idpublication', $id)->update($req);
+      $article=article::where('idpublication', $id);
+
+        $file = $request->file('IMAGE');
+        $filename = 'pubImg'.$article->first()->IDPUBLICATION.'-user'.$article->first()->IDUSER.'.jpeg';
+        if($request->hasFile('IMAGE')){
+
+        //           Storage::disk('local') -> put($filename, file_get_contents($file -> getRealPath()));
+          Storage::disk('local') -> put($filename, File::get($file) );
+        }
+
+        $req = request()->except(['_token','IMAGE']);
+        $article->update($req);
+
+
+
 
         return redirect('/myoffers');
 
