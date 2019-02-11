@@ -16,10 +16,15 @@ Route::get('/myoffers','ArticleController@myoffers');
 Route::get('/offers','ArticleController@index');
 Route::get('/vuejs', function(){return view('vuetesting');});
 //Route::get('/offerpageismael', function(){return view('inc\offerpageismael');});
-Route::get('/offerinfo/details/{idpub}', 'ArticleController@offerDetails');
+Route::get('offerinfo/details/{idpub}', 'ArticleController@offerDetails');
 
 
 Route::get('index.html','MainController@index')->name('');
+
+Route::get('/profile/{id}','UserController@profile');
+
+Route::get('/settings/{id}',  ['as' => 'users.edit', 'uses' => 'UserController@edit']);
+Route::patch('/profile/{id}/update',  ['as' => 'users.update', 'uses' => 'UserController@update']);
 
 Route::get('Ensat_CD', 'InscriptionsCPC_Controller@getData');
 

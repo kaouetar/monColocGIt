@@ -45,7 +45,9 @@
       <a  class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
       <ul class="dropdown-menu">
 				<li><a href="/myoffers">{{ __('Mes offres') }}</a></li>
-        <li><a href="/settings">{{ __('Paramètres') }}</a></li>
+        <li><a href="/profile/{{Auth::user()->id}}">{{ __('Profil') }}</a></li>
+        <li><a href="/chat">{{ __('Messages') }}</a></li>
+
         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 	 									 document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a></li>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

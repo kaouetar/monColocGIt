@@ -3,7 +3,8 @@
 
 @section('stylesheet')
 <link type="text/css" rel="stylesheet" href="css/style.css" />
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('/js/app.js') }}" defer></script>
+
 
 @endsection('stylesheet')
 
@@ -27,11 +28,13 @@
 	@else
 	<li><a href="/offers">Offres Disponibles</a></li>
 
+
 	<li>
       <a  class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
       <ul class="dropdown-menu">
 				<li><a href="/myoffers">{{ __('Mes offres') }}</a></li>
-				<li><a href="/settings">{{ __('Paramètres') }}</a></li>
+				<li><a href="/profile/{{Auth::user()->id}}">{{ __('Profil') }}</a></li>
+				<li><a href="/chat">{{ __('Messages') }}</a></li>
 
         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
 	 									 document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a></li>

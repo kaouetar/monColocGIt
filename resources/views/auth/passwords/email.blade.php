@@ -1,48 +1,206 @@
-@extends('layouts.app')
-@section('headerID','home')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header" style="text-align: center; background-color:#f7c8aa;">{{ __('Réinitialiser mot de passe') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+
+
+<link type="text/css" rel="stylesheet" href="/css/style.css" />
+<script src="{{ asset('js/app.js') }}" defer></script>
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/lib/animations/animations.css" rel="stylesheet">
+  <link href="/lib/hover-pack/hover-pack.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="/css/style2.css" rel="stylesheet">
+  <link href="/css/colors/color-74c9be.css" rel="stylesheet">
+
+	<script src="/lib/jquery/jquery.min.js"></script>
+ <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+ <script src="/lib/php-mail-form/validate.js"></script>
+ <script src="/lib/hover-pack/hover-pack.js"></script>
+
+<style media="screen">
+body{
+  background: #eee url('https://blog.appartager.com/wp-content/uploads/2013/11/Trousseau-de-cl%C3%A9s-740x357.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+}
+html,body{
+  position: relative;
+  height: 100%;
+}
+
+.login-container{
+  position: relative;
+  width: 400px;
+  margin-top:250px;
+  margin-left: 350px;
+  padding: 20px 40px 40px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+#output{
+  position: absolute;
+  width: 300px;
+  top: -75px;
+  left: 0;
+  color: #fff;
+}
+
+#output.alert-success{
+  background: rgb(25, 204, 25);
+}
+
+#output.alert-danger{
+  background: rgb(228, 105, 105);
+}
+
+
+.login-container::before,.login-container::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 3.5px;left: 0;
+  background: #fff;
+  z-index: -1;
+  -webkit-transform: rotateZ(4deg);
+  -moz-transform: rotateZ(4deg);
+  -ms-transform: rotateZ(4deg);
+  border: 1px solid #ccc;
+
+}
+
+.login-container::after{
+  top: 5px;
+  z-index: -2;
+  -webkit-transform: rotateZ(-2deg);
+   -moz-transform: rotateZ(-2deg);
+    -ms-transform: rotateZ(-2deg);
+
+}
+
+.avatar{
+  width: 100px;height: 100px;
+  margin: 10px auto 30px;
+  border-radius: 100%;
+  border: 2px solid #aaa;
+  background-size: cover;
+}
+
+.form-box input{
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  height:40px;
+  border: 1px solid #ccc;;
+  background: #fafafa;
+  transition:0.2s ease-in-out;
+
+}
+.glyphicon {
+    margin-top: 20px;
+    font-size: 50px;
+}
+
+.form-box input:focus{
+  outline: 0;
+  background: #eee;
+}
+
+.form-box input[type="email"]{
+  border-radius: 5px 5px 0 0;
+  text-transform: lowercase;
+}
+
+.form-box input[type="password"]{
+  border-radius: 0 0 5px 5px;
+  border-top: 0;
+}
+
+.form-box button.login{
+  margin-top:15px;
+  padding: 10px 20px;
+}
+
+.animated {
+-webkit-animation-duration: 1s;
+animation-duration: 1s;
+-webkit-animation-fill-mode: both;
+animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInUp {
+0% {
+  opacity: 0;
+  -webkit-transform: translateY(20px);
+  transform: translateY(20px);
+}
+
+100% {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+}
+
+@keyframes fadeInUp {
+0% {
+  opacity: 0;
+  -webkit-transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  transform: translateY(20px);
+}
+
+100% {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+}
+
+.fadeInUp {
+-webkit-animation-name: fadeInUp;
+animation-name: fadeInUp;
+}
+
+
+</style>
+
+
+
+  <div class="container">
+  	<div class="login-container">
+              <div id="output"></div>
+              <div class="avatar"> <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> </div>
+              <div class="form-box">
+                <form action="{{ route('password.email') }}" method="POST">
+                      @csrf
+                    <div class="card-header"><h4>{{ __('Réinitialisation du mot de passe') }}</h4></div>
+
+                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" placeholder="Adresse e-mail" required autofocus>
+
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                  </div>
+                            <button type="submit" class="btn btn" style="background-color:#f7c8aa;color:black;">
+                                {{ __('M\'envoyer le lien de réinitialisation') }}
+                            </button>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn" style="text-align: center; background-color:#f7c8aa;color:black;margin-left:80px">
-                                    {{ __('M\'envoyer le lien de réinitialisation') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
