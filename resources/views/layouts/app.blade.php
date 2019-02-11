@@ -36,7 +36,7 @@ font-size: 110%;
 <body>
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-image:url('/images/Capture.png');">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-image:url('/images/Capture.PNG');">
             <div class="container">
 
                 <a class="navbar-brand" href="{{ url('/') }}">

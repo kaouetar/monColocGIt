@@ -14395,9 +14395,9 @@ window.Popper = __webpack_require__(6).default;
  */
 
 try {
-    window.$ = window.jQuery = __webpack_require__(7);
+  window.$ = window.jQuery = __webpack_require__(7);
 
-    __webpack_require__(19);
+  __webpack_require__(19);
 } catch (e) {}
 
 /**
@@ -14419,9 +14419,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -14435,10 +14435,10 @@ if (token) {
 window.Pusher = __webpack_require__(40);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
-    broadcaster: 'pusher',
-    key: "38a3959157e1b6254c6f",
-    cluster: "eu",
-    encrypted: true
+  broadcaster: 'pusher',
+  key: "38a3959157e1b6254c6f",
+  cluster: "eu",
+  encrypted: true
 });
 
 /***/ }),
@@ -46835,7 +46835,7 @@ if (false) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.6.4
+ * Vue.js v2.6.5
  * (c) 2014-2019 Evan You
  * Released under the MIT License.
  */
@@ -49375,8 +49375,14 @@ function normalizeScopedSlots (
   } else if (slots._normalized) {
     // fast path 1: child component re-render only, parent did not change
     return slots._normalized
-  } else if (slots.$stable && prevSlots && prevSlots !== emptyObject) {
-    // fast path 2: stable scoped slots, only need to normalize once
+  } else if (
+    slots.$stable &&
+    prevSlots &&
+    prevSlots !== emptyObject &&
+    Object.keys(normalSlots).length === 0
+  ) {
+    // fast path 2: stable scoped slots w/ no normal slots to proxy,
+    // only need to normalize once
     return prevSlots
   } else {
     res = {};
@@ -49402,8 +49408,8 @@ function normalizeScopedSlots (
 }
 
 function normalizeScopedSlot(normalSlots, key, fn) {
-  var normalized = function (scope) {
-    var res = fn(scope || {});
+  var normalized = function () {
+    var res = arguments.length ? fn.apply(null, arguments) : fn({});
     res = res && typeof res === 'object' && !Array.isArray(res)
       ? [res] // single vnode
       : normalizeChildren(res);
@@ -52209,7 +52215,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.6.4';
+Vue.version = '2.6.5';
 
 /*  */
 
@@ -54295,9 +54301,17 @@ function add$1 (
     var original = handler;
     handler = original._wrapper = function (e) {
       if (
+        // no bubbling, should always fire.
+        // this is just a safety net in case event.timeStamp is unreliable in
+        // certain weird environments...
+        e.target === e.currentTarget ||
+        // event is fired after handler attachment
         e.timeStamp >= attachedTimestamp ||
+        // #9462 bail for iOS 9 bug: event.timeStamp is 0 after history.pushState
+        e.timeStamp === 0 ||
         // #9448 bail if event is fired in another document in a multi-page
-        // electron/nw.js app
+        // electron/nw.js app, since event.timeStamp will be using a different
+        // starting reference
         e.target.ownerDocument !== document
       ) {
         return original.apply(this, arguments)
@@ -58976,7 +58990,7 @@ var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("2bbf5d63", content, false, {});
+var update = __webpack_require__(3)("6e2955c3", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -59184,7 +59198,7 @@ var content = __webpack_require__(52);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("524c4c76", content, false, {});
+var update = __webpack_require__(3)("f887c536", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -59327,7 +59341,7 @@ var content = __webpack_require__(56);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("b86204e0", content, false, {});
+var update = __webpack_require__(3)("50b14130", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -59513,7 +59527,7 @@ var content = __webpack_require__(61);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("0dd1dd03", content, false, {});
+var update = __webpack_require__(3)("8725153a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -59723,7 +59737,7 @@ var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("7c4c41fb", content, false, {});
+var update = __webpack_require__(3)("292e859b", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
