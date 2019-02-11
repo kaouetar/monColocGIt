@@ -3,17 +3,22 @@
 <style media="screen">
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 @import url(http://fonts.googleapis.com/css?family=Signika);
+
+.well {
+  
+  }
+
 a.btn:hover {
    -webkit-transform: scale(1.1);
    -moz-transform: scale(1.1);
    -o-transform: scale(1.1);
 }
-.addmodal-container, .editmodal-container {
+.addmodal-container, .editmodal-container,.editpwdmodal-container, .editinfomodal-container {
 text-align: center;
 display:inline-block;
 border-top: 1px solid;
 padding: 30px;
-max-width: 750px;
+max-width: 700px;
 width: 100% !important;
 background-color:white;
 margin: 0 auto;
@@ -25,7 +30,7 @@ font-family: roboto;
 box-shadow: 0px 0px 20px rgba(56,56,56,.2);
 }
 
-.addmodal-container h1, .editmodal-container h1 {
+.addmodal-container h1, .editmodal-container h1, .editpwdmodal-container h1, .editinfomodal-container h1 {
 text-align: center;
 font-size: 1.8em;
 
@@ -39,7 +44,7 @@ margin: 0;
 }
 
 
-.addmodal-container label, .editmodal-container label {
+.addmodal-container label, .editmodal-container label, .editpwdmodal-container label, .editinfomodal-container label {
   margin: 0;
   padding: 0;
   display: inline-block;
@@ -51,7 +56,7 @@ margin: 0;
   float: left;
 }​
 
-.addmodal-container input[type=submit], .editmodal-container input[type=submit] {
+.addmodal-container input[type=submit], .editmodal-container input[type=submit], .editpwdmodal-container input[type=submit], .editinfomodal-container input[type=submit] {
 
 width: 100%;
 display: block;
@@ -62,7 +67,7 @@ position: relative;
 
 
 
-.addmodal-container textarea, .editmodal-container textarea {
+.addmodal-container textarea, .editmodal-container textarea, .editpwdmodal-container textarea, .editinfomodal-container textarea {
     width:80%;
     border: none;
     background: #F4F4F4;
@@ -75,20 +80,20 @@ position: relative;
 
 
 }
-.addmodal-container textarea:focus, textarea:active, .editmodal-container textarea:focus, textarea:active{
+.addmodal-container textarea:focus, textarea:active, .editmodal-container textarea:focus, textarea:active, .editinfomodal-container textarea:focus, textarea:active, .editpwdmodal-container textarea:focus, textarea:active{
       border-bottom: 2px solid #eda171;
       color: black  ;
 }
 
-.addmodal-container input[type=number],.editmodal-container input[type=number] {
+.addmodal-container input[type=number],.editmodal-container input[type=number], .editpwdmodal-container input[type=number], .editinfomodal-container input[type=number] {
   width: 80%;
 }
 
-.addmodal-container input[type=text], .editmodal-container input[type=text] {
+.addmodal-container input[type=text], .editmodal-container input[type=text], .editpwdmodal-container input[type=text], .editinfomodal-container input[type=text] {
   width: 80%;
 }
 
-.addmodal-container input[type=text]:hover, .editmodal-container input[type=text]:hover {
+.addmodal-container input[type=text]:hover, .editmodal-container input[type=text]:hover, .editpwdmodal-container input[type=text]:hover, .editinfomodal-container input[type=text]:hover {
 
 border: 1px solid #b9b9b9;
 border-top: 1px solid #a0a0a0;
@@ -97,7 +102,7 @@ border-top: 1px solid #a0a0a0;
 box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
-.addmodal, .editmodal {
+.addmodal, .editmodal, .editpwdmodal, .editinfomodal-submit {
 text-align: left;
 font-size: 14px;
 font-family: 'Arial', sans-serif;
@@ -109,7 +114,7 @@ padding: 0 8px;
 user-select: none; */
 }
 
-.addmodal-submit,.editmodal-submit {
+.addmodal-submit,.editmodal-submit, .editpwdmodal-submit, .editinfomodal-submit {
 /* border: 1px solid #3079ed; */
 border: 0px;
 color: #fff;
@@ -121,7 +126,7 @@ font-size: 14px;
 /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
-.addmodal-submit:hover, .editmodal-submit:hover {
+.addmodal-submit:hover, .editmodal-submit:hover, .editpwdmodal-submit:hover, .editinfomodal-submit:hover {
 /* border: 1px solid #2f5bb7; */
 border: 0px;
 text-shadow: 0 1px rgba(0,0,0,0.3);
@@ -129,7 +134,7 @@ background-color: #357ae8;
 /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
-.addmodal-container a, .editmodal-container a {
+.addmodal-container a, .editmodal-container a, .editpwdmodal-container a, .editinfomodal-container a {
 text-decoration: none;
 color: #666;
 font-weight: 400;
@@ -145,6 +150,108 @@ font-size: 12px;
 
 
 </style>
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+
+<div class="modal fade" id="edit-pwd-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+        <div class="editpwdmodal-container">
+          <h4 style="text-align:center;">Modifier Mot de passe</h4> <br>
+          <form method="POST" action="{{route('users.update')}}">
+                        <input id="newpass" name="newpass" placeholder="Nouveau mot de passe" class="form-control" type="password">
+                        <br>
+                        <input id="confirmnewpass" name="confirmnewpass" placeholder="Confirmer Nouveau mot de passe" class="form-control" type="password">
+                        <br>
+                        <button name="submit" type="submit" class="btn btn-secondary" >Modifier mot de passe</button>
+
+              </form>
+
+          </div>
+        </div>
+      </div>
+
+
+<!-- other model -->
+
+
+<div class="modal fade" id="edit-info-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+
+  <div class="modal-dialog">
+  <div class="editinfomodal-container">
+    <h4 style="text-align:center;">Modifier Informations</h4> <br>
+    <form method="POST" action="{{route('users.update')}}">
+          <div class="form-group" align="center">
+                <input id="name" name="name" placeholder="Full name" class="form-control here" required="required" type="text" value="{{ Auth::user()->name }}" readonly>
+              <br>
+                <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" value="{{  Auth::user()->email }}" readonly>
+              <br>
+                <input id="telephone" name="telephone" placeholder="Telephone" class="form-control here" required="required" type="text" value="{{  Auth::user()->telephone }}" >
+                <br>
+                <textarea id="info" name="info" cols="40" rows="4" class="form-control"></textarea>
+                <br>
+
+               <div class="form-group row">
+                 <div class="offset-4 col-8"  style="color : #868F9B" >
+                  <button name="submit" type="submit" class="btn btn-secondary" style="color:black;">Sauvegarder </button>
+                 </div>
+               </div>
+          </div>
+        </form>
+
+    </div>
+  </div>
+
+
+
+
+    </div>
+
+
+
+<!-- end other model -->
+
+
+<div style="min-height: 100px;margin-top:100px;margin-right:10px;" class="container" >
+    <div class="row">
+        <div class="col-xs-9 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6" >
+                        <img src="https://png.pngtree.com/svg/20170629/icon_personal_information_728344.png" alt="" class="img-rounded img-responsive" style="margin-left:30px;margin-top:20px;height:200px;" />
+                    </div>
+                    <div class="col-sm-4 col-md-4" style="margin-top:20px">
+
+                          <h3>  {{Auth::user()->name}}</h3>
+                        <small><cite title="San Francisco, USA">Tanger, 90000 <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>  {{Auth::user()->email}}
+                            <br />
+                            <i class="glyphicon glyphicon-earphone"></i>  {{Auth::user()->telephone}}
+                            <br />
+                            <i class="glyphicon glyphicon-list-alt"></i>  {{Auth::user()->info}}</p>
+                        <!-- Split button -->
+                        <a href="#test" data-toggle="modal" data-target="#edit-info-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;;" >
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true">Modifier infos</span></a> <br> <br>
+                        <a href="#test" data-toggle="modal" data-target="#edit-pwd-modal" class="btn btn-secondary a-btn-slide-text" style="background-color:#eda171;color:white;" >
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true">Changer mot de passe</span></a>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div id="offers" class="section " style="background: white;">
 
   <div class="container">
@@ -305,22 +412,22 @@ font-size: 12px;
 
           <div class="col-lg-4 col-md-4 col-xs-12 desc ">
               @if (Storage::disk('local')->has('pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'))
-             
-                      <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}"> 
+
+                      <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}">
                       <img style="
                           object-fit: cover;
                           width: 100%;
                           height: 100%"
-                      src="/userimage/{{'pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'}}" alt="" 
+                      src="/userimage/{{'pubImg'.$article->IDPUBLICATION.'-user'.$article->IDUSER.'.jpeg'}}" alt=""
                       />
             @else
-               <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}">  
+               <a style="object-fit: cover; width: 100%; height: 300px;" class="b-link-fade b-animate-go" href="/offerinfo/details/{{$article->IDPUBLICATION}}">
                     <img style="object-fit: cover;
                     width: 100%;
                     height: 100%" src="img/portfolio/port04.jpg" alt="" />
 
             @endif
-              
+
               <div class="b-wrapper">
                   <h4 class="b-from-left b-animate b-delay03">{{$article->TITRE}}</h4>
                   <p class="b-from-right b-animate b-delay03">Read More.</p>
@@ -356,36 +463,6 @@ font-size: 12px;
 
 <script src="{{asset('/js/app.js')}}"></script>
 
-<script type="text/javascript">
 
-
-$('#edit-modal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var title = button.data('Titre')
-  var description = button.data('Description')
-  var NombrePersonnes = button.data('NombrePersonnes')
-
-   // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-     modal.find('.modal-body #Titre').val(title);
-     modal.find('.modal-body #Description').val(description);
-})
-
- $('#delete').on('show.bs.modal', function (event) {
-     var button = $(event.relatedTarget)
-     var cat_id = button.data('catid')
-     var modal = $(this)
-     modal.find('.modal-body #cat_id').val(cat_id);
-})
-
-
-
-
-// on modal hide
-
-
-</script>
 
 <!-- /About -->

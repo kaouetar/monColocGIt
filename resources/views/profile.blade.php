@@ -39,21 +39,24 @@
 	@guest
 	<li><a href="/login">Connexion</a></li>
 	@else
-	<li><a href="/offers">Offres Disponibles</a></li>
+	<li><a href="/offers">Offres disponibles</a></li>
 
 	<li>
-      <a  class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-				<li><a href="/myoffers">{{ __('Mes offres') }}</a></li>
-        <li><a href="/profile/{{Auth::user()->id}}/">{{ __('Profil') }}</a></li>
-        <li><a href="/chat">{{ __('Messages') }}</a></li>
 
-        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+
+      <a  id="drop1" class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+				<li><a tabindex="-1" href="/myoffers">{{ __('Mes offres') }}</a></li>
+        <li><a tabindex="-1" href="/profile/{{Auth::user()->id}}/">{{ __('Profil') }}</a></li>
+        <li><a tabindex="-1" href="/chat">{{ __('Messages') }}</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="{{ route('logout') }}" onclick="event.preventDefault();
 	 									 document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a></li>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 						@csrf
 				</form>
       </ul>
+
     </li>
 	<!--<li><a class="dropdown-item" href="{{ route('logout') }}"
 		 onclick="event.preventDefault();
