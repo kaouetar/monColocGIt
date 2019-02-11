@@ -43,7 +43,7 @@ class UserController extends Controller
         if($request->has('password')) $req['password'] =  \Hash::make($req['password']);
        $user=user::where('ID', auth()->id())->update($req);
 
-      return redirect('/profile/'. auth()->id())->with('message', 'Infos has been updated!');
+      return redirect('/myoffers')->with('message', 'Infos has been updated!');
 
   }
 
