@@ -16,16 +16,16 @@ class ContactsController extends Controller
         ->join('messages', 'users.id', '=', 'messages.from')
         ->where('messages.from' ,'=', auth()->id())
         ->get();*/
-        $a = \DB::table('Users as u')
-        ->select('U.id','U.name','U.email','U.password','U.admin','U.remember_token', 'U.created_at', 'U.updated_at')
-        ->join('messages','messages.from' ,'=', 'U.id')
-        ->where('U.id', '!=', auth()->id())
+        $a = \DB::table('users as u')
+        ->select('u.id','u.name','u.email','u.password','u.admin','u.remember_token', 'u.created_at', 'u.updated_at')
+        ->join('messages','messages.from' ,'=', 'u.id')
+        ->where('u.id', '!=', auth()->id())
         ->where('messages.to','=', auth()->id());
 
-        $b = \DB::table('Users as u')
-        ->select('U.id','U.name','U.email','U.password','U.admin','U.remember_token', 'U.created_at', 'U.updated_at')
-        ->join('messages','messages.to' ,'=', 'U.id')
-        ->where('U.id', '!=', auth()->id())
+        $b = \DB::table('users as u')
+        ->select('u.id','u.name','u.email','u.password','u.admin','u.remember_token', 'u.created_at', 'u.updated_at')
+        ->join('messages','messages.to' ,'=', 'u.id')
+        ->where('u.id', '!=', auth()->id())
         ->where('messages.from','=', auth()->id());
 
         $contacts = $a->union($b)->get();
